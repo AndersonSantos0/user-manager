@@ -1,14 +1,14 @@
+import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Lottie from 'react-lottie'
 import { NoAccessContainer } from './styles'
 import NoAccessAnimation from '../../animations/no_access.json'
-import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 const defaultOptions = {
   loop: true,
   autoplay: true,
-  animationData: NoAccessAnimation,
+  animationData: NoAccessAnimation
 }
 
 interface NoAccessProps {
@@ -17,7 +17,6 @@ interface NoAccessProps {
 }
 
 const NoAccess = ({ redirect = true, hasSession }: NoAccessProps) => {
-
   const router = useRouter()
 
   const [seconds, setSeconds] = useState(5)
@@ -33,11 +32,11 @@ const NoAccess = ({ redirect = true, hasSession }: NoAccessProps) => {
 
   useEffect(() => {
     const decrementSeconds = () => {
-      setSeconds(prev => (prev - 1) < 0 ? 0 : prev - 1)
+      setSeconds(prev => (prev - 1 < 0 ? 0 : prev - 1))
     }
 
-    let intervalTimer = redirect && setInterval(decrementSeconds, 1000)
-    let redirectTimer = redirect && setTimeout(_redirect, seconds * 1000)
+    const intervalTimer = redirect && setInterval(decrementSeconds, 1000)
+    const redirectTimer = redirect && setTimeout(_redirect, seconds * 1000)
 
     return () => {
       clearInterval(intervalTimer)

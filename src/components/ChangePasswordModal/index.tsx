@@ -10,8 +10,8 @@ import ActivityAnimation from '../../animations/activity.json'
 
 const ActivityAnimationOptions = {
   loop: true,
-  autoplay: true, 
-  animationData: ActivityAnimation,
+  autoplay: true,
+  animationData: ActivityAnimation
 }
 
 interface ChangePasswordModalProps {
@@ -19,13 +19,15 @@ interface ChangePasswordModalProps {
   onRequestClose: () => void
 }
 
-const ChangePasswordModal = ({ isOpen, onRequestClose }: ChangePasswordModalProps) =>{
-
+const ChangePasswordModal = ({
+  isOpen,
+  onRequestClose
+}: ChangePasswordModalProps) => {
   const session = useSession()
 
   const [actualPassword, setActualPassword] = useState('')
   const [newPassword, setNewPassword] = useState('')
-  
+
   const [submited, setSubmited] = useState(false)
   const [loading, setLoading] = useState(false)
 
@@ -39,19 +41,25 @@ const ChangePasswordModal = ({ isOpen, onRequestClose }: ChangePasswordModalProp
   const handleChangePassword = async (e: FormEvent) => {
     e.preventDefault()
     setSubmited(true)
-    if(actualPassword === newPassword)return toast.error('As Senhas não podem ser iguais')
+    if (actualPassword === newPassword)
+      return toast.error('As Senhas não podem ser iguais')
 
     const isValidated = validateForm()
-    
+
     setLoading(true)
-    if(isValidated)session.ChangePassword(actualPassword, newPassword).then(()=>{
-      onRequestClose()
-    }).catch((err)=>{
-      toast.error(err)
-    }).finally(()=>setLoading(false))
+    if (isValidated)
+      session
+        .ChangePassword(actualPassword, newPassword)
+        .then(() => {
+          onRequestClose()
+        })
+        .catch(err => {
+          toast.error(err)
+        })
+        .finally(() => setLoading(false))
   }
-  
-  return(
+
+  return (
     <Modal
       overlayClassName={'react-modal-overlay'}
       className={'react-modal-content'}
@@ -84,19 +92,18 @@ const ChangePasswordModal = ({ isOpen, onRequestClose }: ChangePasswordModalProp
           type="password"
         />
         <button disabled={loading} type="submit">
-          {
-            loading ? (
-              <Lottie
-                options={ActivityAnimationOptions}
-                height={'1.6rem'}
-                width={'1.6rem'}
-                isStopped={false}
-                isPaused={false} 
-                isClickToPauseDisabled={true} 
-                />
-            ) : 'Salvar'
-          }
-          
+          {loading ? (
+            <Lottie
+              options={ActivityAnimationOptions}
+              height={'1.6rem'}
+              width={'1.6rem'}
+              isStopped={false}
+              isPaused={false}
+              isClickToPauseDisabled={true}
+            />
+          ) : (
+            'Salvar'
+          )}
         </button>
       </Container>
     </Modal>

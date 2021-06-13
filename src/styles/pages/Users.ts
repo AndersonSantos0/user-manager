@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
-export const HomeContainer = styled.div`
-`
+export const HomeContainer = styled.div``
 
 export const HomeContent = styled.div`
   max-width: 1120px;
@@ -10,13 +9,13 @@ export const HomeContent = styled.div`
   display: flex;
   gap: 3rem;
 
-  section{
+  section {
     flex: 1;
   }
 
-  @media (max-width: 630px){
+  @media (max-width: 630px) {
     flex-direction: column;
-    gap: .5rem;
+    gap: 0.5rem;
   }
 `
 
@@ -26,17 +25,17 @@ export const UsersContainer = styled.div`
   border-radius: 4px;
   padding: 1rem 2rem;
 
-  header{
+  header {
     padding: 1rem 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    h1{
+    h1 {
       color: #666;
     }
-    
-    a{
+
+    a {
       color: #fff;
       background-color: var(--primary);
       height: 2.5rem;
@@ -47,37 +46,37 @@ export const UsersContainer = styled.div`
       border-radius: 4px;
       text-decoration: none;
       gap: 1rem;
-      transition: filter .2s, transform .2s;
+      transition: filter 0.2s, transform 0.2s;
 
-      &:active{
+      &:active {
         transform: scale(0.95);
       }
 
-      &:hover{
-        filter: brightness(.9);
+      &:hover {
+        filter: brightness(0.9);
       }
     }
   }
 
-  > form{
+  > form {
     padding-bottom: 1rem;
     display: flex;
     flex-direction: column;
 
-    section{
+    section {
       display: flex;
       align-items: center;
       flex: 1;
       gap: 1rem;
 
-      & + section{
+      & + section {
         margin-top: 2rem;
       }
 
-      &:last-child{
+      &:last-child {
         margin-top: 3rem;
 
-        label{
+        label {
           color: #666;
         }
       }
@@ -86,81 +85,82 @@ export const UsersContainer = styled.div`
         flex: 1;
       }
 
-      > .switch{
-        max-width: 56px
+      > .switch {
+        max-width: 56px;
       }
 
-      input[type="reset"], input[type="submit"]{
+      input[type='reset'],
+      input[type='submit'] {
         border: none;
         border-radius: 4px;
         height: 2.5rem;
         padding: 0 3rem;
         color: #fff;
         outline: none;
-        transition: filter .2s;
+        transition: filter 0.2s;
         cursor: pointer;
 
-        &:hover{
-          filter: brightness(.8)
+        &:hover {
+          filter: brightness(0.8);
         }
 
-        &:first-child{
+        &:first-child {
           margin-left: auto;
         }
 
-        &[type="reset"]{
+        &[type='reset'] {
           background-color: var(--accentColor);
         }
 
-        &[type="submit"]{
+        &[type='submit'] {
           background-color: var(--primary);
         }
       }
 
-      @media (max-width: 640px){
+      @media (max-width: 640px) {
         flex-direction: column;
         width: 100%;
 
-        &:last-child{
+        &:last-child {
           flex-direction: row;
 
-          >input{
+          > input {
             flex: 1;
           }
         }
 
-        > div{
+        > div {
           width: 100%;
         }
       }
     }
   }
 
-  footer{
+  footer {
     border-top: 1px solid var(--borderColor);
     padding: 1rem 0;
     padding-top: 2rem;
 
-    p{
+    p {
       color: #999;
-      font-size: .8rem;
+      font-size: 0.8rem;
     }
   }
 
-  @media (max-width: 920px){
-    .TDoc{
+  @media (max-width: 920px) {
+    .TDoc {
       display: none;
     }
-    .TBirth{
+    .TBirth {
       text-align: right !important;
     }
   }
 
-  @media (max-width: 820px){
-    .TBirth{
+  @media (max-width: 820px) {
+    .TBirth {
       display: none;
     }
-    .TEmail{
+    .TEmail {
       text-align: right;
     }
   }

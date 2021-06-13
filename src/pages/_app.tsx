@@ -13,16 +13,12 @@ import 'react-toastify/dist/ReactToastify.css'
 Modal.setAppElement('#__next')
 
 function MyApp({ Component, pageProps }) {
-
-  const NoMenuRoutes = [
-    '/signin'
-  ]
+  const NoMenuRoutes = ['/signin']
 
   const router = useRouter()
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-
     const handleRouteChange = () => {
       setLoading(true)
     }

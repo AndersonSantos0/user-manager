@@ -10,12 +10,12 @@ export const NoAccessContainer = styled.div`
   padding: 4rem;
   text-align: center;
 
-  h1{
+  h1 {
     color: #666;
     font-weight: 400;
   }
 
-  h2{
+  h2 {
     color: var(--primary);
     font-weight: 100;
   }

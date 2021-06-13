@@ -8,16 +8,16 @@ export const NotFoundContainer = styled.div`
   justify-content: center;
   padding: 4rem;
 
-  h1{
+  h1 {
     font-weight: 400;
     text-align: center;
   }
 
-  h2{
+  h2 {
     font-weight: 100;
     text-align: center;
 
-    span{
+    span {
       color: var(--primary);
       text-decoration: underline;
       cursor: pointer;

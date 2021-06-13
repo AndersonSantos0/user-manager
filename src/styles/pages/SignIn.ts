@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 
 export const SignInContainer = styled.div`
-  background: var(--background); //linear-gradient(235deg, var(--primary), var(--secondary));
+  background: var(--background);
   flex: 1;
   flex-direction: column;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  > form{
+  > form {
     display: flex;
     flex-direction: column;
     background-color: var(--container);
@@ -16,17 +16,17 @@ export const SignInContainer = styled.div`
     border-radius: 4px;
     border: 1px solid var(--borderColor);
 
-    > svg{
+    > svg {
       align-self: center;
       margin-bottom: 2rem;
     }
 
-    h1{
+    h1 {
       color: #333;
       margin-bottom: 1rem;
     }
 
-    > section{
+    > section {
       display: flex;
       flex-direction: column;
       margin-bottom: 1rem;
@@ -34,7 +34,7 @@ export const SignInContainer = styled.div`
       min-width: 350px;
     }
 
-    button[type="submit"]{
+    button[type='submit'] {
       background-color: var(--primary);
       color: #fff;
       border: none;
@@ -42,30 +42,30 @@ export const SignInContainer = styled.div`
       border-radius: 4px;
       margin-top: 1rem;
       outline: none;
-      transition: filter .1s;
+      transition: filter 0.1s;
       cursor: pointer;
 
-      &:active{
-        filter: brightness(.8);
+      &:active {
+        filter: brightness(0.8);
       }
 
-      &:disabled{
+      &:disabled {
         cursor: default;
-        
-        &:active{
+
+        &:active {
           filter: none;
         }
       }
     }
 
-    > footer{
+    > footer {
       margin-top: 2rem;
       text-align: center;
       color: #999;
-      font-size: .8rem;
+      font-size: 0.8rem;
     }
 
-    @media (max-width:480px){
+    @media (max-width: 480px) {
       flex: 1;
       width: 100%;
       justify-content: center;

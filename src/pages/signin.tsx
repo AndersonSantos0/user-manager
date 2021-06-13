@@ -1,4 +1,4 @@
-import { FormEvent, useLayoutEffect, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
@@ -12,12 +12,11 @@ import ActivityAnimation from '../animations/activity.json'
 
 const ActivityAnimationOptions = {
   loop: true,
-  autoplay: true, 
-  animationData: ActivityAnimation,
+  autoplay: true,
+  animationData: ActivityAnimation
 }
 
 const SignIn = () => {
-
   const session = useSession()
   const router = useRouter()
 
@@ -27,11 +26,11 @@ const SignIn = () => {
   const [loading, setLoading] = useState(false)
   const [submited, setSubmited] = useState(false)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     console.log(session.hasSession)
     if (session.hasSession && !submited) {
       router.push('/users')
-      toast.info('Você ja está logado')
+      toast.info('Você já está logado')
     }
   }, [session.hasSession])
 
@@ -62,22 +61,37 @@ const SignIn = () => {
         <form onSubmit={onSubmitSignInForm}>
           <h1>Entrar</h1>
           <section>
-            <Input placeholder="exemplo@email.com" value={email} error={submited && !IsEmailValid(email)} errorMessage={'Email inválido'} onChange={setEmail} label="Email" type="text" />
-            <Input value={password} error={submited && password.length < 8} errorMessage={'Senha muito curta'} onChange={setPassword} label="Senha" type="password" />
+            <Input
+              placeholder="exemplo@email.com"
+              value={email}
+              error={submited && !IsEmailValid(email)}
+              errorMessage={'Email inválido'}
+              onChange={setEmail}
+              label="Email"
+              type="text"
+            />
+            <Input
+              value={password}
+              error={submited && password.length < 8}
+              errorMessage={'Senha muito curta'}
+              onChange={setPassword}
+              label="Senha"
+              type="password"
+            />
           </section>
           <button disabled={loading} type="submit">
-            {
-              loading ? (
-                <Lottie
-                  options={ActivityAnimationOptions}
-                  height={'1.8rem'}
-                  width={'1.8rem'}
-                  isStopped={false}
-                  isPaused={false} 
-                  isClickToPauseDisabled={true} 
-                  />
-              ) : 'Entrar'
-            } 
+            {loading ? (
+              <Lottie
+                options={ActivityAnimationOptions}
+                height={'1.8rem'}
+                width={'1.8rem'}
+                isStopped={false}
+                isPaused={false}
+                isClickToPauseDisabled={true}
+              />
+            ) : (
+              'Entrar'
+            )}
           </button>
           <footer>
             <p>&copy;2021 - UserManager</p>

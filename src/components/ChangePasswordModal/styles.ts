@@ -1,19 +1,19 @@
 import styled from 'styled-components'
 
 export const Container = styled.form`
-  h2{
+  h2 {
     color: var(--text-title);
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
   }
 
-  div{
-    & + div{
+  div {
+    & + div {
       margin-top: 2rem;
     }
   }
 
-  button[type = "submit"]{
+  button[type='submit'] {
     width: 100%;
     height: 2.5rem;
     background-color: var(--primary);
@@ -25,18 +25,17 @@ export const Container = styled.form`
     cursor: pointer;
     outline: none;
 
-    transition: filter .2s;
+    transition: filter 0.2s;
 
-    &:disabled{
+    &:disabled {
       cursor: default;
 
-      &:hover{
+      &:hover {
         filter: none;
       }
     }
-    
 
-    &:hover{
+    &:hover {
       filter: brightness(0.9);
     }
   }

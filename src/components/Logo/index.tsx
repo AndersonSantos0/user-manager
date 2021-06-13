@@ -5,11 +5,11 @@ interface LogoProps {
   onClick?: () => void
 }
 
-const Logo = ({size = 64, color = "#333", style, onClick}: LogoProps) => {
+const Logo = ({ size = 64, color = '#333', style, onClick }: LogoProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      style={{ isolation: "isolate", ...style }}
+      style={{ isolation: 'isolate', ...style }}
       onClick={onClick}
       width={size}
       height={size}
@@ -17,7 +17,7 @@ const Logo = ({size = 64, color = "#333", style, onClick}: LogoProps) => {
     >
       <defs>
         <clipPath id="_clipPath_1dWUucLdF6YXrq5ZQ9RhGm6B5j7lF63O">
-          <path d="M0 0H64V64H0z"/>
+          <path d="M0 0H64V64H0z" />
         </clipPath>
       </defs>
       <g clipPath="url(#_clipPath_1dWUucLdF6YXrq5ZQ9RhGm6B5j7lF63O)">

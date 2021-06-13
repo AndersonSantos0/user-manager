@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { AsideMenuContainer } from './styles'
 
 const AsideMenu = () => {
-
   const router = useRouter()
 
   return (
@@ -12,10 +11,18 @@ const AsideMenu = () => {
       <h1>Geral</h1>
       <ul>
         <li className={router.route === '/' ? 'active' : null}>
-          <Link href="/"><a><RiDashboardLine /> Dashboard</a></Link>
+          <Link href="/">
+            <a>
+              <RiDashboardLine /> Dashboard
+            </a>
+          </Link>
         </li>
         <li className={router.route.includes('/users') ? 'active' : null}>
-          <Link href="/users"><a><RiUserLine /> Usuários</a></Link>
+          <Link href="/users">
+            <a>
+              <RiUserLine /> Usuários
+            </a>
+          </Link>
         </li>
       </ul>
     </AsideMenuContainer>

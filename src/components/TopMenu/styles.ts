@@ -3,8 +3,6 @@ import styled from 'styled-components'
 export const TopMenuContainer = styled.div`
   width: 100%;
   height: 6rem;
-  //background-color: var(--container);
-  //border-bottom: 1px solid var(--borderColor);
 `
 
 export const TopMenuContent = styled.div`
@@ -16,14 +14,14 @@ export const TopMenuContent = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  > div{
+  > div {
     display: flex;
     align-items: center;
 
-    > svg{
+    > svg {
       cursor: pointer;
     }
-  }  
+  }
 `
 
 export const SearchInputContainer = styled.form`
@@ -31,21 +29,21 @@ export const SearchInputContainer = styled.form`
   height: 2.5rem;
   margin-left: 8rem;
 
-  > input{
+  > input {
     border: 1px solid var(--borderColor);
     border-right-color: transparent;
     border-radius: 1.25rem 0 0 1.25rem;
     height: 2.5rem;
     outline: none;
-    padding: 0 .5rem;
+    padding: 0 0.5rem;
     padding-left: 1rem;
     color: #333;
   }
 
-  > button{
+  > button {
     width: 3rem;
     height: 2.5rem;
-    padding-right: .5rem;
+    padding-right: 0.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -58,12 +56,12 @@ export const SearchInputContainer = styled.form`
     cursor: pointer;
     margin-right: 1rem;
 
-    &:active{
-      filter: brightness(1.1)
+    &:active {
+      filter: brightness(1.1);
     }
   }
 
-  @media (max-width: 630px){
-    margin-left: 1rem ;
+  @media (max-width: 630px) {
+    margin-left: 1rem;
   }
 `

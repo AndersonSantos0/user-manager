@@ -18,19 +18,19 @@ export const UserProfileContainer = styled.div`
   padding: 1rem;
   padding-bottom: 0;
 
-  > div{
+  > div {
     display: flex;
     flex-direction: column;
-    
-    h1{
+
+    h1 {
       color: #333;
       font-weight: 500;
       font-size: 1.5rem;
       line-height: 1.5rem;
-      margin-bottom: .25rem;
+      margin-bottom: 0.25rem;
     }
 
-    h2{
+    h2 {
       color: var(--primary);
       font-weight: 100;
       font-size: 1rem;
@@ -53,7 +53,6 @@ export const UserProfilePhoto = styled.div<UserProfilePhotoProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-
 `
 
 export const UserContentContainer = styled.div`
@@ -71,7 +70,7 @@ export const UserContentContainer = styled.div`
     border: 1px solid var(--borderColor);
   }
 
-  @media (max-width: 640px){
+  @media (max-width: 640px) {
     flex-direction: column;
     gap: 0;
   }
@@ -82,16 +81,15 @@ export const UserContent = styled.div`
   padding: 1rem;
   padding-bottom: 0;
 
-  > table{
+  > table {
     width: 100%;
     border-spacing: 0;
 
-    tbody{
-
-      tr{
+    tbody {
+      tr {
         display: flex;
 
-        td{
+        td {
           flex: 1;
           padding: 1rem;
           border: none;
@@ -99,13 +97,13 @@ export const UserContent = styled.div`
           color: #333;
           position: relative;
 
-          &:first-child{
+          &:first-child {
             color: #666;
             font-weight: 500;
             font-size: 1.1rem;
           }
 
-          &:last-child{
+          &:last-child {
             color: #333;
             text-align: right;
             font-size: 1.1rem;
@@ -115,7 +113,7 @@ export const UserContent = styled.div`
     }
   }
 
-  footer{
+  footer {
     padding: 2rem 0;
     padding-top: 4rem;
     text-align: center;
@@ -130,7 +128,7 @@ export const ActionButtonsContainer = styled.div`
   padding-top: 1rem;
   margin-bottom: 1rem;
 
-  button{
+  button {
     height: 2.5rem;
     border-radius: 4px;
     border: none;
@@ -145,23 +143,23 @@ export const ActionButtonsContainer = styled.div`
     cursor: pointer;
     outline: none;
     display: flex;
-    gap: .5rem;
-    transition: filter .4s;
+    gap: 0.5rem;
+    transition: filter 0.4s;
 
-    &.edit{
+    &.edit {
       background-color: var(--primary);
     }
 
-    &.remove{
+    &.remove {
       background-color: var(--accentColor);
     }
-    
-    > svg{
+
+    > svg {
       font-size: 1.1rem;
     }
 
-    &:hover{
-      filter: brightness(.8);
+    &:hover {
+      filter: brightness(0.8);
     }
   }
 `

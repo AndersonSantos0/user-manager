@@ -2,21 +2,28 @@ import { FiSearch } from 'react-icons/fi'
 
 import Logo from '../Logo'
 import SignOutModal from '../SignOutModal'
-import { TopMenuContainer, TopMenuContent, SearchInputContainer } from './styles'
+import {
+  TopMenuContainer,
+  TopMenuContent,
+  SearchInputContainer
+} from './styles'
 import Profile from './Profile'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 
-const TopMenu = () =>{
-
+const TopMenu = () => {
   const router = useRouter()
   const [showSignOutModal, setShowSignOutModal] = useState(false)
 
-  return(
+  return (
     <TopMenuContainer>
       <TopMenuContent>
         <div>
-          <Logo onClick={()=>router.push('/')} size="3rem" color="var(--primary)" />
+          <Logo
+            onClick={() => router.push('/')}
+            size="3rem"
+            color="var(--primary)"
+          />
           <SearchInputContainer>
             <input placeholder="Pesquisar usuários" type="text" />
             <button>
@@ -24,9 +31,12 @@ const TopMenu = () =>{
             </button>
           </SearchInputContainer>
         </div>
-        <Profile showSignOutModal={()=>setShowSignOutModal(true)} />
+        <Profile showSignOutModal={() => setShowSignOutModal(true)} />
       </TopMenuContent>
-      <SignOutModal isOpen={showSignOutModal} onRequestClose={()=>setShowSignOutModal(false)} />
+      <SignOutModal
+        isOpen={showSignOutModal}
+        onRequestClose={() => setShowSignOutModal(false)}
+      />
     </TopMenuContainer>
   )
 }

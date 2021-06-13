@@ -9,7 +9,6 @@
     "server": "json-server db.json -w -d 750 -p 3333"
   },
   "dependencies": {
-    "@types/styled-components": "^5.1.10",
     "axios": "^0.21.1",
     "base-64": "^1.0.0",
     "date-fns": "^2.22.1",
@@ -31,7 +30,18 @@
     "@types/node": "^15.12.2",
     "@types/react": "^17.0.11",
     "@types/react-lottie": "^1.2.5",
+    "@types/styled-components": "^5.1.10",
+    "@typescript-eslint/eslint-plugin": "^4.26.1",
+    "@typescript-eslint/parser": "^4.26.1",
     "eslint": "^7.28.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-react": "^7.24.0",
+    "prettier": "^2.3.0",
     "typescript": "^4.3.2"
   }
 }

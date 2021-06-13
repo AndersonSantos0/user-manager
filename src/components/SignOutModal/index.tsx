@@ -1,7 +1,6 @@
-import { FormEvent, useState } from 'react'
+import { FormEvent } from 'react'
 import Modal from 'react-modal'
 import { FiX } from 'react-icons/fi'
-import Input from '../Input'
 import { Container } from './styles'
 import { useSession } from '../../hooks/useSession'
 
@@ -10,17 +9,19 @@ interface ChangePasswordModalProps {
   onRequestClose: () => void
 }
 
-const ChangePasswordModal = ({ isOpen, onRequestClose }: ChangePasswordModalProps) =>{
-  
+const ChangePasswordModal = ({
+  isOpen,
+  onRequestClose
+}: ChangePasswordModalProps) => {
   const session = useSession()
-  
+
   const handleSignOut = async (e: FormEvent) => {
     e.preventDefault()
     session.SignOut()
     onRequestClose()
   }
-  
-  return(
+
+  return (
     <Modal
       overlayClassName={'react-modal-overlay'}
       className={'react-modal-content'}
@@ -35,10 +36,15 @@ const ChangePasswordModal = ({ isOpen, onRequestClose }: ChangePasswordModalProp
         <FiX size={'1.25rem'} />
       </button>
       <Container>
-        <h2><span>{session.user.firstName}</span> tem certeza que deseja sair dessa sessão?</h2>
+        <h2>
+          <span>{session.user.firstName}</span> tem certeza que deseja sair
+          dessa sessão?
+        </h2>
         <div>
-          <button onClick={onRequestClose} >Cancelar</button>
-          <button className={'signout'} onClick={handleSignOut} >Sair</button>
+          <button onClick={onRequestClose}>Cancelar</button>
+          <button className={'signout'} onClick={handleSignOut}>
+            Sair
+          </button>
         </div>
       </Container>
     </Modal>

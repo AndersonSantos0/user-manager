@@ -7,14 +7,13 @@ import { useRouter } from 'next/router'
 const defaultOptions = {
   loop: true,
   autoplay: true,
-  animationData: NotFoundAnimation,
+  animationData: NotFoundAnimation
 }
 
-const NotFound = () =>{
-
+const NotFound = () => {
   const router = useRouter()
 
-  return(
+  return (
     <NotFoundContainer>
       <Head>
         <title>Pagina não encontrada</title>
@@ -29,7 +28,10 @@ const NotFound = () =>{
         isClickToPauseDisabled={true}
       />
       <h1>Oops</h1>
-      <h2>Esse caminho parece meio vazio, precisamos <span onClick={()=>router.push('/users')}>voltar</span></h2>
+      <h2>
+        Esse caminho parece meio vazio, precisamos{' '}
+        <span onClick={() => router.push('/users')}>voltar</span>
+      </h2>
     </NotFoundContainer>
   )
 }

@@ -10,7 +10,7 @@ export const InputContainer = styled.div<InputContainerProps>`
   flex-direction: column;
   position: relative;
 
-  > div{
+  > div {
     width: 100%;
     position: relative;
 
@@ -18,19 +18,21 @@ export const InputContainer = styled.div<InputContainerProps>`
       border-radius: 4px;
       font-size: 1rem;
       color: #333;
-      border: 1px solid ${props => props.error ? 'var(--accentColor) !important' : 'var(--borderColor)'};
+      border: 1px solid
+        ${props =>
+          props.error ? 'var(--accentColor) !important' : 'var(--borderColor)'};
       padding: 0 0.75rem;
       height: 2.5rem;
       outline: none;
-      transition: border-color .4s;
+      transition: border-color 0.4s;
       width: 100%;
       font-family: 'Poppins';
 
-      ::placeholder{
-        color: #bbb
+      ::placeholder {
+        color: #bbb;
       }
 
-      &:focus{
+      &:focus {
         border-color: var(--primary);
       }
 
@@ -75,7 +77,7 @@ export const InputIcon = styled.div`
 
 export const InputFeedBack = styled.p`
   color: var(--accentColor);
-  font-size: .8rem;
+  font-size: 0.8rem;
   position: absolute;
   bottom: -1.4rem;
   left: 0;

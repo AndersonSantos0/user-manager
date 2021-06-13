@@ -50,6 +50,16 @@
       "password": "MTIzNDU2Nzg=",
       "role": "ADMIN",
       "id": 5
+    },
+    {
+      "firstName": "teste",
+      "lastName": "teste",
+      "birthDate": "09-04-2003",
+      "email": "Anderson_Santos__@outlook.com",
+      "document": "53700612893",
+      "password": "UDFwMnBwNHA1cDY=",
+      "role": "USER",
+      "id": 6
     }
   ]
 }

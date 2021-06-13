@@ -31,31 +31,26 @@ const Input: React.FC<InputProps> = ({
     <InputContainer error={error} hasIcon={hasIcon}>
       <InputLabel>{label}</InputLabel>
       <div>
-        {
-          ['document', 'date'].includes(type) ? (
-            <TextInputMask
-              value={
-                value
-              }
-              kind={ type === 'document' && 'cpf' || type === 'date' && 'datetime'}
-              options={{ format: type === 'date' && 'DD-MM-YYYY'}}
-              placeholder={placeholder}
-              onClick={onClick}
-              onChangeText={(e) => onChange && onChange(e)}
-            />
-          ) : (
-            <input
-              value={
-                value
-              }
-              placeholder={placeholder}
-              type={showPassword ? 'text' : type}
-              onClick={onClick}
-              onChange={e => onChange && onChange(e.target.value)}
-            />
-          )
-
-        }
+        {['document', 'date'].includes(type) ? (
+          <TextInputMask
+            value={value}
+            kind={
+              (type === 'document' && 'cpf') || (type === 'date' && 'datetime')
+            }
+            options={{ format: type === 'date' && 'DD-MM-YYYY' }}
+            placeholder={placeholder}
+            onClick={onClick}
+            onChangeText={e => onChange && onChange(e)}
+          />
+        ) : (
+          <input
+            value={value}
+            placeholder={placeholder}
+            type={showPassword ? 'text' : type}
+            onClick={onClick}
+            onChange={e => onChange && onChange(e.target.value)}
+          />
+        )}
         {type === 'password' && (
           <InputIcon onClick={() => setShowPassword(!showPassword)}>
             {showPassword ? (
@@ -66,9 +61,9 @@ const Input: React.FC<InputProps> = ({
           </InputIcon>
         )}
       </div>
-      {error && <InputFeedBack>
-        {errorMessage || 'Valor inválido'}
-      </InputFeedBack>}
+      {error && (
+        <InputFeedBack>{errorMessage || 'Valor inválido'}</InputFeedBack>
+      )}
     </InputContainer>
   )
 }

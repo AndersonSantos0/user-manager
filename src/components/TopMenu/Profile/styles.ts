@@ -8,34 +8,34 @@ export const ProfileContainer = styled.div`
 `
 
 export const ProfileUserContainer = styled.div`
-  border-radius: .75rem;
+  border-radius: 0.75rem;
   padding: 0 1rem;
-  margin-right: .5rem;
+  margin-right: 0.5rem;
   align-items: center;
   display: flex;
 
-  > div{
+  > div {
     cursor: pointer;
 
-    > h1{
+    > h1 {
       font-size: 1rem;
       line-height: 1rem;
       text-align: right;
       color: #333;
     }
 
-    > p{
-      font-size: .8rem;
+    > p {
+      font-size: 0.8rem;
       text-align: right;
       color: #666;
 
-      @media (max-width: 710px){
+      @media (max-width: 710px) {
         display: none;
       }
     }
   }
 
-  @media (max-width: 530px){
+  @media (max-width: 530px) {
     display: none;
   }
 `
@@ -68,7 +68,7 @@ export const ProfileLogoutContainer = styled.div`
   align-items: center;
   justify-content: center;
 
-  > button{
+  > button {
     aspect-ratio: 1/1;
     height: 1.5rem;
     border-radius: 4px;
@@ -79,7 +79,7 @@ export const ProfileLogoutContainer = styled.div`
     background: transparent;
     cursor: pointer;
 
-    > svg{
+    > svg {
       color: var(--accentColor);
       font-size: 1rem;
       transform: rotateY(180deg);

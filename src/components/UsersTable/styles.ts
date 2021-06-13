@@ -4,15 +4,15 @@ export const UsersTableContainer = styled.table`
   width: 100%;
   border-spacing: 0;
 
-  .TBirth{
+  .TBirth {
     text-align: center;
   }
-  
-  .TDoc{
+
+  .TDoc {
     text-align: right;
   }
 
-  th{
+  th {
     color: #999;
     font-weight: 500;
     padding: 1rem;
@@ -20,7 +20,7 @@ export const UsersTableContainer = styled.table`
     line-height: 1.5rem;
   }
 
-  td{
+  td {
     padding: 1rem;
     border: none;
     border-top: 1px solid var(--borderColor);
@@ -29,13 +29,12 @@ export const UsersTableContainer = styled.table`
     position: relative;
   }
 
-  tbody{
-    
-    tr{
-      cursor : pointer;
+  tbody {
+    tr {
+      cursor: pointer;
 
-      &:hover{
-        filter: brightness(.95)
+      &:hover {
+        filter: brightness(0.95);
       }
     }
   }
