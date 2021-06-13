@@ -8,8 +8,8 @@ import { GetServerSideProps } from 'next'
 import { UserType } from '../../types/user'
 import { useSession } from '../../hooks/useSession'
 import {
-  HomeContainer,
-  HomeContent,
+  UsersScreenContainer,
+  UsersScreenContent,
   UsersContainer
 } from '../../styles/pages/Users'
 
@@ -25,8 +25,8 @@ const UsersScreen = ({ users = [] }: UserScreenProps) => {
       <Head>
         <title>UserManager</title>
       </Head>
-      <HomeContainer>
-        <HomeContent>
+      <UsersScreenContainer>
+        <UsersScreenContent>
           <AsideMenu />
           <section>
             <UsersContainer>
@@ -47,8 +47,8 @@ const UsersScreen = ({ users = [] }: UserScreenProps) => {
               </footer>
             </UsersContainer>
           </section>
-        </HomeContent>
-      </HomeContainer>
+        </UsersScreenContent>
+      </UsersScreenContainer>
     </div>
   )
 }

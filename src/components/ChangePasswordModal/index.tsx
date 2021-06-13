@@ -2,17 +2,10 @@ import { FormEvent, useState } from 'react'
 import Modal from 'react-modal'
 import { FiX } from 'react-icons/fi'
 import { toast } from 'react-toastify'
-import Lottie from 'react-lottie'
+import ActivityIndicator from '../ActivityIndicator'
 import Input from '../Input'
 import { Container } from './styles'
 import { useSession } from '../../hooks/useSession'
-import ActivityAnimation from '../../animations/activity.json'
-
-const ActivityAnimationOptions = {
-  loop: true,
-  autoplay: true,
-  animationData: ActivityAnimation
-}
 
 interface ChangePasswordModalProps {
   isOpen: boolean
@@ -93,14 +86,7 @@ const ChangePasswordModal = ({
         />
         <button disabled={loading} type="submit">
           {loading ? (
-            <Lottie
-              options={ActivityAnimationOptions}
-              height={'1.6rem'}
-              width={'1.6rem'}
-              isStopped={false}
-              isPaused={false}
-              isClickToPauseDisabled={true}
-            />
+            <ActivityIndicator width="1.5rem" height="1.5rem" />
           ) : (
             'Salvar'
           )}

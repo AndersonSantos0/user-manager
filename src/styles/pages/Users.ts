@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-export const HomeContainer = styled.div``
+export const UsersScreenContainer = styled.div``
 
-export const HomeContent = styled.div`
+export const UsersScreenContent = styled.div`
   max-width: 1120px;
   margin: 0 auto;
   padding: 1rem;
@@ -89,31 +89,42 @@ export const UsersContainer = styled.div`
         max-width: 56px;
       }
 
-      input[type='reset'],
-      input[type='submit'] {
+      button {
+        background-color: var(--primary);
+        position: relative;
         border: none;
         border-radius: 4px;
         height: 2.5rem;
-        padding: 0 3rem;
+        padding: 0 1.5rem;
         color: #fff;
         outline: none;
         transition: filter 0.2s;
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        gap: 1rem;
+        font-family: 'Poppins';
+
+        &:disabled {
+          cursor: default;
+
+          &:hover {
+            filter: none;
+          }
+        }
 
         &:hover {
           filter: brightness(0.8);
         }
 
-        &:first-child {
-          margin-left: auto;
-        }
-
-        &[type='reset'] {
+        &.remove {
           background-color: var(--accentColor);
         }
 
-        &[type='submit'] {
-          background-color: var(--primary);
+        > svg {
+          font-size: 1.1rem;
         }
       }
 

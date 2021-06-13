@@ -2,19 +2,12 @@ import { FormEvent, useEffect, useState } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
-import Lottie from 'react-lottie'
 import { SignInContainer } from '../styles/pages/SignIn'
+import ActivityIndicator from '../components/ActivityIndicator'
 import { Screen } from '../styles/global'
 import { useSession } from '../hooks/useSession'
 import Input from '../components/Input'
-import { IsEmailValid } from '../utils/validation'
-import ActivityAnimation from '../animations/activity.json'
-
-const ActivityAnimationOptions = {
-  loop: true,
-  autoplay: true,
-  animationData: ActivityAnimation
-}
+import { isEmailValid } from '../utils/validation'
 
 const SignIn = () => {
   const session = useSession()
@@ -28,14 +21,20 @@ const SignIn = () => {
 
   useEffect(() => {
     console.log(session.hasSession)
+    let hasSessionTimer
+
     if (session.hasSession && !submited) {
-      router.push('/users')
-      toast.info('Você já está logado')
+      hasSessionTimer = setTimeout(() => {
+        router.push('/users')
+        toast.info('Você já está logado')
+      }, 1000)
     }
+
+    return () => clearTimeout(hasSessionTimer)
   }, [session.hasSession])
 
   const validateForm = () => {
-    if (!IsEmailValid(email)) return false
+    if (!isEmailValid(email)) return false
     if (password.length < 8) return false
 
     return true
@@ -64,7 +63,7 @@ const SignIn = () => {
             <Input
               placeholder="exemplo@email.com"
               value={email}
-              error={submited && !IsEmailValid(email)}
+              error={submited && !isEmailValid(email)}
               errorMessage={'Email inválido'}
               onChange={setEmail}
               label="Email"
@@ -81,14 +80,7 @@ const SignIn = () => {
           </section>
           <button disabled={loading} type="submit">
             {loading ? (
-              <Lottie
-                options={ActivityAnimationOptions}
-                height={'1.8rem'}
-                width={'1.8rem'}
-                isStopped={false}
-                isPaused={false}
-                isClickToPauseDisabled={true}
-              />
+              <ActivityIndicator width="1.8rem" height="1.8rem" />
             ) : (
               'Entrar'
             )}

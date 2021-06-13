@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { useRouter } from 'next/router'
 import Modal from 'react-modal'
+import { ToastContainer } from 'react-toastify'
 import AppContainer from '../components/AppContainer'
 import SessionProvider from '../hooks/useSession'
 import GlobalStyles, { LoadingBar } from '../styles/global'
@@ -41,6 +42,7 @@ function MyApp({ Component, pageProps }) {
       <SessionProvider>
         <AppContainer>
           <LoadingBar loading={loading ? 1 : 0} />
+          <ToastContainer autoClose={3000} position="top-right" />
           {!NoMenuRoutes.includes(router.route) && <TopMenu />}
           <Component {...pageProps} />
         </AppContainer>

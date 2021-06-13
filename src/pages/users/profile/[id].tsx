@@ -5,6 +5,7 @@ import base64 from 'base-64'
 import { Screen } from '../../../styles/global'
 import AsideMenu from '../../../components/AsideMenu'
 import ChangePasswordModal from '../../../components/ChangePasswordModal'
+import RemoveUserModal from '../../../components/RemoveUserModal'
 import { GetServerSideProps } from 'next'
 import { api } from '../../../services/api'
 import { UserType } from '../../../types/user'
@@ -18,6 +19,7 @@ import {
   ActionButtonsContainer,
   UserContent
 } from '../../../styles/pages/Profile'
+import { useRouter } from 'next/router'
 
 interface UserScreenProps {
   user: UserType
@@ -25,8 +27,10 @@ interface UserScreenProps {
 
 const UserScreen = ({ user }: UserScreenProps) => {
   const session = useSession()
+  const router = useRouter()
 
   const [showChangePasswordModal, setShowChangePasswordModal] = useState(false)
+  const [showRemoveUserModal, setShowRemoveUserModal] = useState(false)
 
   return (
     <Screen>
@@ -90,11 +94,18 @@ const UserScreen = ({ user }: UserScreenProps) => {
                     // caso usuário logar seja Administrador
                     session.user.role === 'ADMIN' ? (
                       <>
-                        <button className="edit">
+                        <button
+                          onClick={() => router.push('/users/edit/' + user.id)}
+                          className="edit"
+                        >
                           Editar usuário
                           <FiEdit2 />
                         </button>
-                        <button className="remove">
+                        <button
+                          onClick={() => setShowRemoveUserModal(true)}
+                          type="button"
+                          className="remove"
+                        >
                           Remover usuário
                           <FiTrash2 />
                         </button>
@@ -121,6 +132,11 @@ const UserScreen = ({ user }: UserScreenProps) => {
       <ChangePasswordModal
         isOpen={showChangePasswordModal}
         onRequestClose={() => setShowChangePasswordModal(false)}
+      />
+      <RemoveUserModal
+        user={user}
+        isOpen={showRemoveUserModal}
+        onRequestClose={() => setShowRemoveUserModal(false)}
       />
     </Screen>
   )

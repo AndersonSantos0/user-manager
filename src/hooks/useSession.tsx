@@ -9,7 +9,6 @@ import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 import { api } from '../services/api'
 import { UserType } from '../types/user'
-
 import base64 from 'base-64'
 
 interface SessionContextData {
@@ -33,7 +32,7 @@ interface SessionProviderProps {
 export const SessionProvider = ({ children }: SessionProviderProps) => {
   const router = useRouter()
 
-  const [hasSession, setHasSession] = useState(false)
+  const [hasSession, setHasSession] = useState<undefined | boolean>(undefined)
   const [user, setUser] = useState<UserType>({} as UserType)
 
   useEffect(() => {
@@ -50,6 +49,7 @@ export const SessionProvider = ({ children }: SessionProviderProps) => {
 
     // localstorage user vazio
     console.log('usuário não encontrado')
+    setHasSession(false)
   }, [])
 
   const SignIn = async (email: string, password: string) => {
@@ -57,7 +57,7 @@ export const SessionProvider = ({ children }: SessionProviderProps) => {
     await api
       .get('/users', {
         params: {
-          email,
+          email: email.toLowerCase(),
           password: base64.encode(password)
         }
       })
@@ -83,14 +83,14 @@ export const SessionProvider = ({ children }: SessionProviderProps) => {
   }
 
   const SignOut = () => {
-    // redirecionar para /signin
-    router.push('/signin')
+    // reseta a sessão
+    setHasSession(false)
     // remove os dados do usuário salvos no localstorage
     localStorage.removeItem('user')
-    // cancela a sessão
-    setHasSession(false)
     // remove os dados do usuário da sessão
     setUser({} as UserType)
+    // redirecionar para /signin
+    router.push('/signin')
   }
 
   const ChangePassword = async (
@@ -100,7 +100,7 @@ export const SessionProvider = ({ children }: SessionProviderProps) => {
     return await api
       .get('/users', {
         params: {
-          email: user.email,
+          email: user.email.toLowerCase(),
           password: base64.encode(actualPassword)
         }
       })

@@ -1,20 +1,20 @@
-import React, { useEffect } from 'react'
+import React, { memo } from 'react'
 import { useRouter } from 'next/router'
-import { ToastContainer } from 'react-toastify'
 import NoAccess from '../NoAccess'
 import { useSession } from '../../hooks/useSession'
 import { AppContainerElement } from './styles'
 
-const AppContainer: React.FC = ({ children }) => {
+interface AppContainerProps {
+  children: React.ReactNode
+}
+
+const AppContainer = ({ children }: AppContainerProps) => {
   const session = useSession()
   const router = useRouter()
 
   const adminOnlyRoutes = ['/users/create']
 
-  useEffect(() => {
-    console.log(session.hasSession)
-  }, [session.hasSession])
-
+  if (session.hasSession === undefined) return <AppContainerElement />
   if (
     (!session.hasSession && router.route !== '/signin') ||
     (session.hasSession &&
@@ -23,17 +23,11 @@ const AppContainer: React.FC = ({ children }) => {
   )
     return (
       <AppContainerElement>
-        <ToastContainer autoClose={3000} position="top-center" />
         <NoAccess hasSession={session.hasSession} />
       </AppContainerElement>
     )
 
-  return (
-    <AppContainerElement>
-      <ToastContainer autoClose={3000} position="top-center" />
-      {children}
-    </AppContainerElement>
-  )
+  return <AppContainerElement>{children}</AppContainerElement>
 }
 
-export default AppContainer
+export default memo(AppContainer)
