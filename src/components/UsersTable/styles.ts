@@ -27,6 +27,12 @@ export const UsersTableContainer = styled.table`
     background-color: var(--container);
     color: #333;
     position: relative;
+
+    > p {
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+      max-width: 15.5rem;
+    }
   }
 
   tbody {

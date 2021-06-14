@@ -8,6 +8,9 @@ export default createGlobalStyle`
     --container: ${props => props.theme.colors.container};
     --accentColor: ${props => props.theme.colors.accentColor};
     --borderColor: ${props => props.theme.colors.borderColor};
+    --text-title: ${props => props.theme.colors.textTitle};
+    --text: ${props => props.theme.colors.text};
+    --description: ${props => props.theme.colors.description};
   }
 
   *{
@@ -31,6 +34,7 @@ export default createGlobalStyle`
   html {
     font-size: 100%;
     height: 100%;
+    width: 100%;
 
     @media (max-width: 1080px) {
       font-size: 93.75%;

@@ -26,7 +26,7 @@ export const InputContainer = styled.div<InputContainerProps>`
       outline: none;
       transition: border-color 0.4s;
       width: 100%;
-      font-family: 'Poppins';
+      font-family: 'Poppins', sans-serif;
 
       ::placeholder {
         color: #bbb;

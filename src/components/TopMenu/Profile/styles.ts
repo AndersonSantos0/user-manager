@@ -28,6 +28,9 @@ export const ProfileUserContainer = styled.div`
       font-size: 0.8rem;
       text-align: right;
       color: #666;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 18vw;
 
       @media (max-width: 710px) {
         display: none;

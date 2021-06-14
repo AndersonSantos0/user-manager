@@ -29,8 +29,13 @@ export const AsideMenuContainer = styled.aside`
           color: var(--primary);
         }
       }
+    }
 
-      @media (max-width: 630px) {
+    @media (max-width: 630px) {
+      display: flex;
+      gap: 1rem;
+
+      > li {
         padding: 0.5rem 0;
       }
     }

@@ -1,5 +1,6 @@
 import React, { memo } from 'react'
 import { useRouter } from 'next/router'
+import { ToastContainer } from 'react-toastify'
 import NoAccess from '../NoAccess'
 import { useSession } from '../../hooks/useSession'
 import { AppContainerElement } from './styles'
@@ -23,11 +24,17 @@ const AppContainer = ({ children }: AppContainerProps) => {
   )
     return (
       <AppContainerElement>
+        <ToastContainer autoClose={3000} position="top-right" />
         <NoAccess hasSession={session.hasSession} />
       </AppContainerElement>
     )
 
-  return <AppContainerElement>{children}</AppContainerElement>
+  return (
+    <AppContainerElement>
+      <ToastContainer autoClose={3000} position="top-right" />
+      {children}
+    </AppContainerElement>
+  )
 }
 
 export default memo(AppContainer)

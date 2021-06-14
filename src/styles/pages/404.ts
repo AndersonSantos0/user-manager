@@ -7,6 +7,11 @@ export const NotFoundContainer = styled.div`
   align-items: center;
   justify-content: center;
   padding: 4rem;
+  padding-bottom: 8rem;
+
+  > div {
+    margin-bottom: -3rem !important;
+  }
 
   h1 {
     font-weight: 400;

@@ -81,7 +81,7 @@ export const UserContent = styled.div`
   padding: 1rem;
   padding-bottom: 0;
 
-  > table {
+  table {
     width: 100%;
     border-spacing: 0;
 
@@ -96,6 +96,13 @@ export const UserContent = styled.div`
           border-top: 1px solid var(--borderColor);
           color: #333;
           position: relative;
+
+          > p {
+            overflow-x: hidden;
+            text-overflow: ellipsis;
+            max-width: 24rem;
+            margin-left: auto;
+          }
 
           &:first-child {
             color: #666;
@@ -138,7 +145,7 @@ export const ActionButtonsContainer = styled.div`
     align-items: center;
     justify-content: center;
     padding: 0 1rem;
-    font-family: 'Poppins';
+    font-family: 'Poppins', sans-serif;
     white-space: nowrap;
     cursor: pointer;
     outline: none;
@@ -160,6 +167,12 @@ export const ActionButtonsContainer = styled.div`
 
     &:hover {
       filter: brightness(0.8);
+    }
+  }
+
+  @media (max-width: 640px) {
+    > button {
+      flex: 1;
     }
   }
 `

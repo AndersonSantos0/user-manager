@@ -69,7 +69,7 @@ const RemoveUserModal = ({
           <span>
             {user.firstName} {user.lastName}
           </span>{' '}
-          seram apagados e não poderão ser recuperados
+          serão apagados e não poderão ser recuperados
         </p>
         {session.user.id === user.id && (
           <p className="sameHasSession">

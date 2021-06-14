@@ -80,6 +80,11 @@ export const SessionProvider = ({ children }: SessionProviderProps) => {
         toast.success('Login realizado com sucesso')
         router.push('/users')
       })
+      .catch(() => {
+        toast.error(
+          'Não foi possível fazer login agora, tente novamente mais tarde'
+        )
+      })
   }
 
   const SignOut = () => {
@@ -115,6 +120,7 @@ export const SessionProvider = ({ children }: SessionProviderProps) => {
           })
           .then(() => {
             toast.success('Senha alterada com sucesso')
+            SignOut()
             return true
           })
       })

@@ -24,6 +24,7 @@ import {
   UsersScreenContent,
   UsersContainer
 } from '../../../styles/pages/Users'
+import { useSession } from '../../../hooks/useSession'
 
 interface UserEditProps {
   status: number
@@ -35,6 +36,7 @@ const UserEdit = ({ status, user }: UserEditProps) => {
   if (status === 404) return <NotFound />
 
   const router = useRouter()
+  const session = useSession()
 
   const [showRemoveUserModal, setShowRemoveUserModal] = useState(false)
 
@@ -111,7 +113,12 @@ const UserEdit = ({ status, user }: UserEditProps) => {
           role: admin ? 'ADMIN' : 'USER'
         })
         .then(() => {
-          router.push('/users')
+          if (session.user.id === user.id) {
+            session.SignOut()
+          } else {
+            router.push('/users')
+          }
+
           toast.success('Usuário alterado com sucesso!')
         })
         .finally(() => setLoading(false))
@@ -211,29 +218,34 @@ const UserEdit = ({ status, user }: UserEditProps) => {
                     />
                     <label>Administrador</label>
                   </div>
-                  <button
-                    onClick={() => setShowRemoveUserModal(true)}
-                    type="button"
-                    className="remove"
-                  >
-                    Remover
-                    <FiTrash2 />
-                  </button>
-                  <button disabled={loading} type="submit">
-                    {loading && (
-                      <ActivityIndicator
-                        style={{
-                          position: 'absolute',
-                          backgroundColor: 'inherit'
-                        }}
-                        width="100%"
-                        height="1.5rem"
-                      />
-                    )}
-                    Salvar
-                    <FiSave />
-                  </button>
+                  <div className="buttons">
+                    <button
+                      onClick={() => setShowRemoveUserModal(true)}
+                      type="button"
+                      className="remove"
+                    >
+                      Remover
+                      <FiTrash2 />
+                    </button>
+                    <button disabled={loading} type="submit">
+                      {loading && (
+                        <ActivityIndicator
+                          style={{
+                            position: 'absolute',
+                            backgroundColor: 'inherit'
+                          }}
+                          width="100%"
+                          height="1.5rem"
+                        />
+                      )}
+                      Salvar
+                      <FiSave />
+                    </button>
+                  </div>
                 </section>
+                {session.user.id === user.id && (
+                  <p>Após editar esse usuário você será deslogado</p>
+                )}
               </form>
             </UsersContainer>
           </section>

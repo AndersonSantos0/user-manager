@@ -4,6 +4,7 @@ import Switch from 'react-switch'
 import base64 from 'base-64'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
+import { FiSave } from 'react-icons/fi'
 import ActivityIndicator from '../../components/ActivityIndicator'
 import Input from '../../components/Input'
 import AsideMenu from '../../components/AsideMenu'
@@ -196,11 +197,12 @@ const UserCreate = () => {
                           position: 'absolute',
                           backgroundColor: 'var(--primary)'
                         }}
-                        width="4rem"
+                        width="100%"
                         height="1.5rem"
                       />
                     )}
                     Salvar
+                    <FiSave />
                   </button>
                 </section>
               </form>

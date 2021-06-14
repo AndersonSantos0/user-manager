@@ -32,7 +32,7 @@ const UsersScreen = ({ users = [] }: UserScreenProps) => {
             <UsersContainer>
               <header>
                 <h1>Usuários</h1>
-                {session.user.role === 'ADMIN' && (
+                {session.user?.role === 'ADMIN' && (
                   <Link href="/users/create">
                     <a>
                       Adicionar usuário

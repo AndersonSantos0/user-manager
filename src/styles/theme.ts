@@ -5,7 +5,10 @@ const theme = {
     background: '#f6f6f6',
     container: '#fff',
     accentColor: '#FF5F5F',
-    borderColor: '#ddd'
+    borderColor: '#ddd',
+    textTitle: '#333',
+    text: '#666',
+    description: '#999'
   }
 }
 

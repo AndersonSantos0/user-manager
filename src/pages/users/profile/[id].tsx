@@ -59,34 +59,48 @@ const UserScreen = ({ user }: UserScreenProps) => {
               </UserProfileContainer>
             </UserProfile>
             <UserContent>
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Nome: </td>
-                    <td>{user.firstName}</td>
-                  </tr>
-                  <tr>
-                    <td>Sobrenome: </td>
-                    <td>{user.lastName}</td>
-                  </tr>
-                  <tr>
-                    <td>Email: </td>
-                    <td>{user.email}</td>
-                  </tr>
-                  <tr>
-                    <td>Nascimento: </td>
-                    <td>{user.birthDate}</td>
-                  </tr>
-                  <tr>
-                    <td>Documento: </td>
-                    <td>{user.document}</td>
-                  </tr>
-                  <tr>
-                    <td>Senha: </td>
-                    <td>{user.password}</td>
-                  </tr>
-                </tbody>
-              </table>
+              <div style={{ overflowX: 'auto' }}>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>Nome: </td>
+                      <td>
+                        <p>{user.firstName}</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Sobrenome: </td>
+                      <td>
+                        <p>{user.lastName}</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Email: </td>
+                      <td>
+                        <p>{user.email}</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Nascimento: </td>
+                      <td>
+                        <p>{user.birthDate}</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Documento: </td>
+                      <td>
+                        <p>{user.document}</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Senha: </td>
+                      <td>
+                        <p>{user.password}</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
               {(session.user.id === user.id ||
                 session.user.role === 'ADMIN') && (
                 <ActionButtonsContainer>

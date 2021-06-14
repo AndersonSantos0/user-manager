@@ -63,11 +63,18 @@ export const UsersContainer = styled.div`
     display: flex;
     flex-direction: column;
 
+    > p {
+      font-size: 0.8rem;
+      margin-top: 2rem;
+      color: var(--accentColor);
+    }
+
     section {
       display: flex;
       align-items: center;
       flex: 1;
       gap: 1rem;
+      flex-wrap: wrap;
 
       & + section {
         margin-top: 2rem;
@@ -83,6 +90,22 @@ export const UsersContainer = styled.div`
 
       > div {
         flex: 1;
+        display: flex;
+
+        &.buttons {
+          gap: 1rem;
+          margin-left: auto;
+
+          button:first-child {
+            margin-left: auto;
+          }
+
+          @media (max-width: 640px) {
+            button {
+              flex: 1;
+            }
+          }
+        }
       }
 
       > .switch {
@@ -105,7 +128,7 @@ export const UsersContainer = styled.div`
         justify-content: center;
         font-size: 1rem;
         gap: 1rem;
-        font-family: 'Poppins';
+        font-family: 'Poppins', sans-serif;
 
         &:disabled {
           cursor: default;
@@ -131,6 +154,7 @@ export const UsersContainer = styled.div`
       @media (max-width: 640px) {
         flex-direction: column;
         width: 100%;
+        gap: 2rem;
 
         &:last-child {
           flex-direction: row;
@@ -173,6 +197,10 @@ export const UsersContainer = styled.div`
     }
     .TEmail {
       text-align: right;
+
+      > p {
+        margin-left: auto;
+      }
     }
   }
 `

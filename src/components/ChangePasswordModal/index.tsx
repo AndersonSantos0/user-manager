@@ -43,9 +43,6 @@ const ChangePasswordModal = ({
     if (isValidated)
       session
         .ChangePassword(actualPassword, newPassword)
-        .then(() => {
-          onRequestClose()
-        })
         .catch(err => {
           toast.error(err)
         })
@@ -68,6 +65,7 @@ const ChangePasswordModal = ({
       </button>
       <Container onSubmit={handleChangePassword}>
         <h2>Alterar senha</h2>
+        <p>Após alterar a senha você será deslogado</p>
         <Input
           value={actualPassword}
           error={submited && actualPassword.length < 8}
