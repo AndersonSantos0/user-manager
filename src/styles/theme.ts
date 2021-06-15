@@ -1,4 +1,4 @@
-const theme = {
+export const light = {
   colors: {
     primaryColor: '#339AFF',
     secondaryColor: '#1960AB',
@@ -6,10 +6,24 @@ const theme = {
     container: '#fff',
     accentColor: '#FF5F5F',
     borderColor: '#ddd',
-    textTitle: '#333',
-    text: '#666',
-    description: '#999'
+    textTitle: '#666',
+    text: '#333',
+    description: '#999',
+    placeholder: '#c6c6c6'
   }
 }
 
-export default theme
+export const dark = {
+  colors: {
+    primaryColor: '#339AFF',
+    secondaryColor: '#1960AB',
+    background: '#333',
+    container: '#444',
+    accentColor: '#FF5F5F',
+    borderColor: '#222',
+    textTitle: '#bbb',
+    text: '#fff',
+    description: '#999',
+    placeholder: '#666'
+  }
+}

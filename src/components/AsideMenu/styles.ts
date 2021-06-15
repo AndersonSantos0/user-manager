@@ -4,7 +4,7 @@ export const AsideMenuContainer = styled.aside`
   > h1 {
     text-transform: uppercase;
     font-size: 1rem;
-    color: #999;
+    color: var(--description);
   }
 
   > ul {
@@ -20,8 +20,9 @@ export const AsideMenuContainer = styled.aside`
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        color: #333;
+        color: var(--text);
         text-decoration: none;
+        cursor: pointer;
       }
 
       &.active {

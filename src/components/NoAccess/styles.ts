@@ -10,8 +10,12 @@ export const NoAccessContainer = styled.div`
   padding: 4rem;
   text-align: center;
 
+  svg {
+    opacity: 0.8;
+  }
+
   h1 {
-    color: #666;
+    color: var(--description);
     font-weight: 400;
   }
 

@@ -41,14 +41,12 @@ export const SessionProvider = ({ children }: SessionProviderProps) => {
 
     if (userData) {
       // salvar usuário em sessão
-      console.log('usuário encontrado')
       setHasSession(true)
       setUser(JSON.parse(userData))
       return
     }
 
     // localstorage user vazio
-    console.log('usuário não encontrado')
     setHasSession(false)
   }, [])
 
@@ -62,7 +60,7 @@ export const SessionProvider = ({ children }: SessionProviderProps) => {
         // redirecionar para /users
         setUser(user)
         setHasSession(true)
-        toast.success('Login realizado com sucesso')
+        toast.info('Login realizado com sucesso')
         router.push('/users')
       })
       .catch(err => {
@@ -89,7 +87,7 @@ export const SessionProvider = ({ children }: SessionProviderProps) => {
     newPassword: string
   ) => {
     return ChangePasswordAPI(user.id, actualPassword, newPassword).then(() => {
-      toast.success('Senha alterada com sucesso')
+      toast.info('Senha alterada com sucesso')
       SignOut()
       return true
     })

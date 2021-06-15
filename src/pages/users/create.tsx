@@ -4,6 +4,7 @@ import Switch from 'react-switch'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
 import { FiSave } from 'react-icons/fi'
+import ImagePicker from '../../components/ImagePicker'
 import { Screen } from '../../styles/global'
 import ActivityIndicator from '../../components/ActivityIndicator'
 import Input from '../../components/Input'
@@ -26,6 +27,7 @@ const UserCreate = () => {
   // dados de cadastro
   const [name, setName] = useState('')
   const [lastName, setLastName] = useState('')
+  const [image, setImage] = useState('')
   const [email, setEmail] = useState('')
   const [birthDate, setBirthDate] = useState('')
   const [document, setDocument] = useState('')
@@ -83,6 +85,7 @@ const UserCreate = () => {
       return CreateUserAPI({
         firstName: name,
         email,
+        image,
         birthDate,
         document,
         lastName,
@@ -91,7 +94,7 @@ const UserCreate = () => {
       })
         .then(() => {
           router.push('/users')
-          toast.success('Usuário criado com sucesso!')
+          toast.info('Usuário criado com sucesso!')
         })
         .finally(() => setLoading(false))
     setLoading(false)
@@ -112,22 +115,25 @@ const UserCreate = () => {
               </header>
               <form onSubmit={onSubmitForm}>
                 <section>
-                  <Input
-                    value={name}
-                    error={submited && name.length < 2}
-                    errorMessage={'Nome muito curto'}
-                    onChange={setName}
-                    label="Nome"
-                    type="text"
-                  />
-                  <Input
-                    value={lastName}
-                    error={submited && lastName.length < 2}
-                    errorMessage={'Sobrenome muito curto'}
-                    onChange={setLastName}
-                    label="Sobrenome"
-                    type="text"
-                  />
+                  <ImagePicker value={image} onChange={e => setImage(e)} />
+                  <section>
+                    <Input
+                      value={name}
+                      error={submited && name.length < 2}
+                      errorMessage={'Nome muito curto'}
+                      onChange={setName}
+                      label="Nome"
+                      type="text"
+                    />
+                    <Input
+                      value={lastName}
+                      error={submited && lastName.length < 2}
+                      errorMessage={'Sobrenome muito curto'}
+                      onChange={setLastName}
+                      label="Sobrenome"
+                      type="text"
+                    />
+                  </section>
                 </section>
                 <section>
                   <Input

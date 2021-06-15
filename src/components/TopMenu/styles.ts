@@ -32,12 +32,17 @@ export const SearchInputContainer = styled.form`
   > input {
     border: 1px solid var(--borderColor);
     border-right-color: transparent;
+    background-color: var(--container);
     border-radius: 1.25rem 0 0 1.25rem;
     height: 2.5rem;
     outline: none;
     padding: 0 0.5rem;
     padding-left: 1rem;
-    color: #333;
+    color: var(--text);
+
+    ::placeholder {
+      color: var(--description);
+    }
   }
 
   > button {
@@ -50,7 +55,7 @@ export const SearchInputContainer = styled.form`
     border: 1px solid var(--borderColor);
     border-left: none;
     background-color: var(--container);
-    color: #333;
+    color: var(--text);
     border-radius: 0 1.25rem 1.25rem 0;
     outline: none;
     cursor: pointer;

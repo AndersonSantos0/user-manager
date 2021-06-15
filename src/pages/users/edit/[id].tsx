@@ -13,6 +13,7 @@ import Input from '../../../components/Input'
 import AsideMenu from '../../../components/AsideMenu'
 import { api } from '../../../services/api'
 import { UserType } from '../../../types/user'
+import ImagePicker from '../../../components/ImagePicker'
 import NotFound from '../../404'
 import {
   isBirthDateValid,
@@ -45,6 +46,7 @@ const UserEdit = ({ status, user }: UserEditProps) => {
   // dados do usuário cadastrado
   const [name, setName] = useState(user.firstName)
   const [lastName, setLastName] = useState(user.lastName)
+  const [image, setImage] = useState(user.image)
   const [email, setEmail] = useState(user.email)
   const [birthDate, setBirthDate] = useState(user.birthDate)
   const [document, setDocument] = useState(String(user.document))
@@ -110,6 +112,7 @@ const UserEdit = ({ status, user }: UserEditProps) => {
         id: user.id,
         firstName: name,
         lastName,
+        image,
         birthDate,
         email,
         document,
@@ -123,7 +126,7 @@ const UserEdit = ({ status, user }: UserEditProps) => {
             router.push('/users')
           }
 
-          toast.success('Usuário alterado com sucesso!')
+          toast.info('Usuário alterado com sucesso!')
         })
         .finally(() => setLoading(false))
     setLoading(false)
@@ -144,22 +147,25 @@ const UserEdit = ({ status, user }: UserEditProps) => {
               </header>
               <form onSubmit={onSubmitForm}>
                 <section>
-                  <Input
-                    value={name}
-                    error={submited && name.length < 2}
-                    errorMessage={'Nome muito curto'}
-                    onChange={setName}
-                    label="Nome"
-                    type="text"
-                  />
-                  <Input
-                    value={lastName}
-                    error={submited && lastName.length < 2}
-                    errorMessage={'Sobrenome muito curto'}
-                    onChange={setLastName}
-                    label="Sobrenome"
-                    type="text"
-                  />
+                  <ImagePicker value={image} onChange={e => setImage(e)} />
+                  <section>
+                    <Input
+                      value={name}
+                      error={submited && name.length < 2}
+                      errorMessage={'Nome muito curto'}
+                      onChange={setName}
+                      label="Nome"
+                      type="text"
+                    />
+                    <Input
+                      value={lastName}
+                      error={submited && lastName.length < 2}
+                      errorMessage={'Sobrenome muito curto'}
+                      onChange={setLastName}
+                      label="Sobrenome"
+                      type="text"
+                    />
+                  </section>
                 </section>
                 <section>
                   <Input

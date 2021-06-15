@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import { ThemeProvider } from 'styled-components'
+
 import { useRouter } from 'next/router'
 import Modal from 'react-modal'
+import ThemeProvider from '../hooks/useTheme'
 import AppContainer from '../components/AppContainer'
 import SessionProvider from '../hooks/useSession'
 import GlobalStyles, { LoadingBar } from '../styles/global'
-import theme from '../styles/theme'
 import TopMenu from '../components/TopMenu'
 
 import 'react-toastify/dist/ReactToastify.css'
@@ -37,7 +37,7 @@ function MyApp({ Component, pageProps }) {
   }, [])
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider>
       <SessionProvider>
         <AppContainer>
           <LoadingBar loading={loading ? 1 : 0} />

@@ -17,7 +17,7 @@ export const InputContainer = styled.div<InputContainerProps>`
     input {
       border-radius: 4px;
       font-size: 1rem;
-      color: #333;
+      color: var(--text);
       border: 1px solid
         ${props =>
           props.error ? 'var(--accentColor) !important' : 'var(--borderColor)'};
@@ -27,9 +27,10 @@ export const InputContainer = styled.div<InputContainerProps>`
       transition: border-color 0.4s;
       width: 100%;
       font-family: 'Poppins', sans-serif;
+      background-color: var(--background);
 
       ::placeholder {
-        color: #bbb;
+        color: var(--placeholder);
       }
 
       &:focus {
@@ -59,7 +60,7 @@ export const InputContainer = styled.div<InputContainerProps>`
 export const InputLabel = styled.label`
   font-size: 1rem;
   margin-bottom: 4px;
-  color: #666;
+  color: var(--text-title);
 `
 
 export const InputIcon = styled.div`
@@ -67,7 +68,7 @@ export const InputIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #666;
+  color: var(--description);
   right: 0;
   bottom: 0;
   cursor: pointer;

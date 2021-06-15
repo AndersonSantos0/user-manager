@@ -17,6 +17,8 @@ export const Container = styled.form`
   }
 
   p {
+    color: var(--text);
+
     > span {
       color: var(--primary);
     }

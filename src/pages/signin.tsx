@@ -20,7 +20,6 @@ const SignIn = () => {
   const [submited, setSubmited] = useState(false)
 
   useEffect(() => {
-    console.log(session.hasSession)
     let hasSessionTimer
 
     if (session.hasSession && !submited) {

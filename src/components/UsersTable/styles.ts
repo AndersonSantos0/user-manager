@@ -25,7 +25,7 @@ export const UsersTableContainer = styled.table`
     border: none;
     border-top: 1px solid var(--borderColor);
     background-color: var(--container);
-    color: #333;
+    color: var(--text);
     position: relative;
 
     > p {

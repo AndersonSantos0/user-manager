@@ -23,7 +23,7 @@ export const UserProfileContainer = styled.div`
     flex-direction: column;
 
     h1 {
-      color: #333;
+      color: var(--text-title);
       font-weight: 500;
       font-size: 1.5rem;
       line-height: 1.5rem;
@@ -94,24 +94,23 @@ export const UserContent = styled.div`
           padding: 1rem;
           border: none;
           border-top: 1px solid var(--borderColor);
-          color: #333;
           position: relative;
 
           > p {
             overflow-x: hidden;
             text-overflow: ellipsis;
             max-width: 24rem;
+            color: var(--text);
             margin-left: auto;
           }
 
           &:first-child {
-            color: #666;
+            color: var(--description);
             font-weight: 500;
             font-size: 1.1rem;
           }
 
           &:last-child {
-            color: #333;
             text-align: right;
             font-size: 1.1rem;
           }

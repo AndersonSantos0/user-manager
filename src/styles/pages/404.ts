@@ -11,16 +11,22 @@ export const NotFoundContainer = styled.div`
 
   > div {
     margin-bottom: -3rem !important;
+
+    svg {
+      opacity: 0.8;
+    }
   }
 
   h1 {
     font-weight: 400;
     text-align: center;
+    color: var(--text-title);
   }
 
   h2 {
     font-weight: 100;
     text-align: center;
+    color: var(--description);
 
     span {
       color: var(--primary);

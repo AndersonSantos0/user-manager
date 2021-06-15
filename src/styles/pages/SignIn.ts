@@ -22,7 +22,7 @@ export const SignInContainer = styled.div`
     }
 
     h1 {
-      color: #333;
+      color: var(--text-title);
       margin-bottom: 1rem;
     }
 

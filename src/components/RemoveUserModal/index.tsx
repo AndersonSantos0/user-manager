@@ -32,7 +32,7 @@ const RemoveUserModal = ({
 
     RemoveUserAPI(user.id)
       .then(() => {
-        toast.success('usuário removido com sucesso!')
+        toast.info('usuário removido com sucesso!')
         if (session.user.id === user.id) return session.SignOut()
         router.push('/users')
       })

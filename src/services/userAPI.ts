@@ -13,8 +13,11 @@ export const CreateUserAPI = async ({
   document,
   email,
   password,
-  role
+  role,
+  image
 }: CreateUserAPIArgs) => {
+  console.log('[image]: ', image)
+
   return await api.post('/users', {
     firstName,
     lastName,
@@ -22,7 +25,8 @@ export const CreateUserAPI = async ({
     email: email.toLowerCase(),
     document: String(document).replace(/[^\d]+/g, ''),
     password: base64.encode(password),
-    role
+    role,
+    image
   })
 }
 
@@ -69,7 +73,8 @@ export const EditUserAPI = async ({
   email,
   document,
   password,
-  role
+  role,
+  image
 }: EditUserAPIArgs) => {
   return api.patch('/users/' + id, {
     firstName,
@@ -78,6 +83,7 @@ export const EditUserAPI = async ({
     email: email.toLowerCase(),
     document: document.replace(/[^\d]+/g, ''),
     password: base64.encode(password),
-    role
+    role,
+    image
   })
 }

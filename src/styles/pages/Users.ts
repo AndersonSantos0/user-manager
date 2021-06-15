@@ -34,7 +34,7 @@ export const UsersContainer = styled.div`
     align-items: center;
 
     h1 {
-      color: #666;
+      color: var(--text-title);
     }
 
     a {
@@ -84,15 +84,24 @@ export const UsersContainer = styled.div`
 
       &:last-child {
         margin-top: 3rem;
+      }
 
-        label {
-          color: #666;
+      > section {
+        margin: 0 !important;
+        flex-direction: column;
+
+        > div {
+          width: 100%;
         }
       }
 
       > div {
         flex: 1;
         display: flex;
+
+        > label {
+          color: var(--text-title);
+        }
 
         &.buttons {
           gap: 1rem;

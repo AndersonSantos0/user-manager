@@ -11,6 +11,7 @@ export default createGlobalStyle`
     --text-title: ${props => props.theme.colors.textTitle};
     --text: ${props => props.theme.colors.text};
     --description: ${props => props.theme.colors.description};
+    --placeholder: ${props => props.theme.colors.placeholder};
   }
 
   *{
@@ -60,7 +61,8 @@ export default createGlobalStyle`
   }
 
   .react-modal-content{
-    background-color: var(--background);
+    background-color: var(--container);
+    border: 1px solid var(--borderColor);
     width: 100%;
     max-width: 576px;
     padding: 3rem;

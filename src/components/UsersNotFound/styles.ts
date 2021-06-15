@@ -13,6 +13,10 @@ export const UsersNotFoundContainer = styled.div`
 
   h1 {
     text-align: center;
-    color: var(--description);
+    color: var(--text-title);
+  }
+
+  svg {
+    opacity: 0.8;
   }
 `

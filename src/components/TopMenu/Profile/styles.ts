@@ -21,13 +21,13 @@ export const ProfileUserContainer = styled.div`
       font-size: 1rem;
       line-height: 1rem;
       text-align: right;
-      color: #333;
+      color: var(--text);
     }
 
     > p {
       font-size: 0.8rem;
       text-align: right;
-      color: #666;
+      color: var(--description);
       overflow: hidden;
       text-overflow: ellipsis;
       max-width: 18vw;
