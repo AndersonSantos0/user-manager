@@ -24,10 +24,10 @@ export const InputContainer = styled.div<InputContainerProps>`
       padding: 0 0.75rem;
       height: 2.5rem;
       outline: none;
-      transition: border-color 0.4s;
       width: 100%;
       font-family: 'Poppins', sans-serif;
       background-color: var(--background);
+      transition: background-color 0.4s, border-color 0.4s, color 0.4s;
 
       ::placeholder {
         color: var(--placeholder);
@@ -61,6 +61,7 @@ export const InputLabel = styled.label`
   font-size: 1rem;
   margin-bottom: 4px;
   color: var(--text-title);
+  transition: color 0.4s;
 `
 
 export const InputIcon = styled.div`
@@ -69,6 +70,7 @@ export const InputIcon = styled.div`
   align-items: center;
   justify-content: center;
   color: var(--description);
+  transition: color 0.4s;
   right: 0;
   bottom: 0;
   cursor: pointer;

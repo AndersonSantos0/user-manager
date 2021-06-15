@@ -5,6 +5,12 @@ export const AsideMenuContainer = styled.aside`
     text-transform: uppercase;
     font-size: 1rem;
     color: var(--description);
+    transition: color 0.4s;
+    margin-top: 1rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
   }
 
   > ul {
@@ -23,6 +29,7 @@ export const AsideMenuContainer = styled.aside`
         color: var(--text);
         text-decoration: none;
         cursor: pointer;
+        transition: color 0.4s;
       }
 
       &.active {

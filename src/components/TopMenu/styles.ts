@@ -39,6 +39,7 @@ export const SearchInputContainer = styled.form`
     padding: 0 0.5rem;
     padding-left: 1rem;
     color: var(--text);
+    transition: background-color 0.4s, border-color 0.4s, color 0.4s;
 
     ::placeholder {
       color: var(--description);
@@ -60,6 +61,7 @@ export const SearchInputContainer = styled.form`
     outline: none;
     cursor: pointer;
     margin-right: 1rem;
+    transition: background-color 0.4s, border-color 0.4s, color 0.4s;
 
     &:active {
       filter: brightness(1.1);

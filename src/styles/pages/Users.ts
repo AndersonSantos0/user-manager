@@ -24,6 +24,7 @@ export const UsersScreenContent = styled.div`
 export const UsersContainer = styled.div`
   background-color: var(--container);
   border: 1px solid var(--borderColor);
+  transition: background-color 0.4s, border-color 0.4s;
   border-radius: 4px;
   padding: 1rem 2rem;
 
@@ -35,6 +36,7 @@ export const UsersContainer = styled.div`
 
     h1 {
       color: var(--text-title);
+      transition: color 0.4s;
     }
 
     a {
@@ -101,6 +103,7 @@ export const UsersContainer = styled.div`
 
         > label {
           color: var(--text-title);
+          transition: color 0.4s;
         }
 
         &.buttons {
@@ -184,6 +187,7 @@ export const UsersContainer = styled.div`
 
   footer {
     border-top: 1px solid var(--borderColor);
+    transition: border-color 0.4s;
     padding: 1rem 0;
     padding-top: 2rem;
     display: flex;
@@ -191,7 +195,8 @@ export const UsersContainer = styled.div`
     align-items: center;
 
     p {
-      color: #999;
+      color: var(--description);
+      transition: color 0.4s;
       font-size: 0.8rem;
     }
   }

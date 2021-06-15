@@ -13,6 +13,7 @@ export const ImagePickerContainer = styled.div<ImagePickerContainerProps>`
   margin-right: 1rem;
   border-radius: 4rem;
   border: 1px solid var(--borderColor);
+  transition: border-color 0.4s;
   background-image: url(${props => props.image});
   background-size: cover;
   background-position: center;

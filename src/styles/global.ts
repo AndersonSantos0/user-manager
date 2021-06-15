@@ -25,6 +25,7 @@ export default createGlobalStyle`
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
   background-color: var(--background);
+  transition: background-color .4s;
   height: 100%;
 
     #__next{

@@ -33,7 +33,12 @@ const AsideMenu = () => {
       <ul>
         <li>
           <a onClick={() => switchTheme()}>
-            {theme === 'dark' ? <FiToggleRight /> : <FiToggleLeft />}Dark mode
+            {theme === 'dark' ? (
+              <FiToggleRight color="var(--primary)" />
+            ) : (
+              <FiToggleLeft />
+            )}
+            Dark mode
           </a>
         </li>
       </ul>

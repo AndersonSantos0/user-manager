@@ -22,12 +22,14 @@ export const ProfileUserContainer = styled.div`
       line-height: 1rem;
       text-align: right;
       color: var(--text);
+      transition: color 0.4s;
     }
 
     > p {
       font-size: 0.8rem;
       text-align: right;
       color: var(--description);
+      transition: color 0.4s;
       overflow: hidden;
       text-overflow: ellipsis;
       max-width: 18vw;
@@ -51,6 +53,7 @@ export const ProfileImageContainer = styled.div<ProfileImageContainerProps>`
   min-width: 2.5rem;
   min-height: 2.5rem;
   border: 1px solid var(--borderColor);
+  transition: border-color 0.4s;
   border-radius: 1.175rem;
   background-position: center;
   background-size: cover;
@@ -67,6 +70,7 @@ export const ProfileLogoutContainer = styled.div`
   padding: 0 1rem;
   margin-left: 1rem;
   border-left: 1px solid var(--borderColor);
+  transition: border-color 0.4s;
   display: flex;
   align-items: center;
   justify-content: center;

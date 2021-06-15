@@ -24,6 +24,7 @@ export const UserProfileContainer = styled.div`
 
     h1 {
       color: var(--text-title);
+      transition: color 0.4s;
       font-weight: 500;
       font-size: 1.5rem;
       line-height: 1.5rem;
@@ -32,6 +33,7 @@ export const UserProfileContainer = styled.div`
 
     h2 {
       color: var(--primary);
+      transition: color 0.4s;
       font-weight: 100;
       font-size: 1rem;
     }
@@ -47,6 +49,7 @@ export const UserProfilePhoto = styled.div<UserProfilePhotoProps>`
   aspect-ratio: 1/1;
   border-radius: 3rem;
   border: 1px solid var(--borderColor);
+  transition: border-color 0.4s;
   background-image: url(${props => props.image});
   background-size: cover;
   background-position: center;
@@ -68,6 +71,7 @@ export const UserContentContainer = styled.div`
     background: var(--container);
     border-radius: 4px;
     border: 1px solid var(--borderColor);
+    transition: background-color 0.4s, border-color 0.4s;
   }
 
   @media (max-width: 640px) {
@@ -94,6 +98,7 @@ export const UserContent = styled.div`
           padding: 1rem;
           border: none;
           border-top: 1px solid var(--borderColor);
+          transition: border-color 0.4s;
           position: relative;
 
           > p {
@@ -101,6 +106,7 @@ export const UserContent = styled.div`
             text-overflow: ellipsis;
             max-width: 24rem;
             color: var(--text);
+            transition: color 0.4s;
             margin-left: auto;
           }
 
@@ -131,6 +137,7 @@ export const ActionButtonsContainer = styled.div`
   justify-content: flex-end;
   gap: 1rem;
   border-top: 1px solid var(--borderColor);
+  transition: border-color 0.4s;
   padding-top: 1rem;
   margin-bottom: 1rem;
 

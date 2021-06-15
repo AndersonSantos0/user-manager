@@ -1,11 +1,9 @@
 import styled from 'styled-components'
 
-export const UsersNotFoundContainer = styled.div`
-  height: 20rem;
+export const BlankDashboardContainer = styled.div`
+  flex: 1;
   width: 100%;
-  border-top: 1px solid var(--borderColor);
-  transition: border-color 0.4s;
-  padding: 1rem;
+  padding: 4rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,6 +17,6 @@ export const UsersNotFoundContainer = styled.div`
   }
 
   svg {
-    opacity: 0.8;
+    filter: brightness(0.95);
   }
 `

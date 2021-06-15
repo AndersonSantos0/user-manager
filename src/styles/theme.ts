@@ -20,7 +20,7 @@ export const dark = {
     background: '#333',
     container: '#444',
     accentColor: '#FF5F5F',
-    borderColor: '#222',
+    borderColor: '#2c2c2c',
     textTitle: '#bbb',
     text: '#fff',
     description: '#999',
