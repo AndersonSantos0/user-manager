@@ -1,5 +1,6 @@
 import moment from 'moment'
 import { api } from '../services/api'
+import { UserType } from '../types/user'
 
 export const isEmailValid = (email: string): boolean => {
   const reg =
@@ -86,6 +87,72 @@ export const isDocumentValid = (cpf: string): boolean => {
 
   if (rev === 10 || rev === 11) rev = 0
   if (rev !== parseInt(cpf.charAt(10))) return false
+
+  return true
+}
+
+interface ValidateFormDataArgs
+  extends Omit<UserType, 'id' | 'document' | 'role'> {
+  document: string
+}
+
+interface ValidateFormUserArgs {
+  userEmail: string
+  userDocument: string | number
+}
+
+const DOC_ALREADY_EXIST_OBJ = {
+  error: 'DOC_ALREADY_EXIST',
+  message: 'Documento já cadastrado'
+}
+
+const EMAIL_ALREADY_EXIST_OBJ = {
+  error: 'EMAIL_ALREADY_EXIST',
+  message: 'Email já cadastrado'
+}
+
+export const validateForm = async (
+  {
+    firstName,
+    lastName,
+    birthDate,
+    document,
+    email,
+    password
+  }: ValidateFormDataArgs,
+  user?: ValidateFormUserArgs
+) => {
+  const formatedDocument = Number(document.replace(/[^\d]+/g, ''))
+  const formatedEmail = email.toLowerCase()
+
+  if (firstName.length < 2) return false
+  if (lastName.length < 2) return false
+  if (!isBirthDateValid(birthDate)) return false
+  if (!isDocumentValid(document)) return false
+  if (!isEmailValid(formatedEmail)) return false
+  if (password.length < 8) return false
+
+  const [isEmailAlreadyTaken, isDocumentAlreadyTaken] = await isDbUserFree(
+    formatedEmail,
+    formatedDocument
+  )
+
+  if (user) {
+    if (!user.userEmail || !user.userDocument)
+      throw { message: 'usuário inválido' }
+
+    const userEmail = user.userEmail
+    const userDocument = Number(user.userDocument)
+
+    if (isDocumentAlreadyTaken && formatedDocument !== userDocument)
+      throw DOC_ALREADY_EXIST_OBJ
+
+    if (isEmailAlreadyTaken && formatedEmail !== userEmail)
+      throw EMAIL_ALREADY_EXIST_OBJ
+  }
+
+  if (isDocumentAlreadyTaken && !user) throw DOC_ALREADY_EXIST_OBJ
+  if (isEmailAlreadyTaken && !user) throw EMAIL_ALREADY_EXIST_OBJ
 
   return true
 }

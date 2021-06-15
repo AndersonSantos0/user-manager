@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-export const UsersScreenContainer = styled.div``
+export const UsersScreenContainer = styled.div`
+  flex: 1;
+`
 
 export const UsersScreenContent = styled.div`
   max-width: 1120px;
@@ -175,6 +177,9 @@ export const UsersContainer = styled.div`
     border-top: 1px solid var(--borderColor);
     padding: 1rem 0;
     padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     p {
       color: #999;

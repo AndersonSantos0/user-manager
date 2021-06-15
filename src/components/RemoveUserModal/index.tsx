@@ -5,9 +5,9 @@ import { toast } from 'react-toastify'
 import ActivityIndicator from '../ActivityIndicator'
 import { Container } from './styles'
 import { UserType } from '../../types/user'
-import { api } from '../../services/api'
 import { useRouter } from 'next/router'
 import { useSession } from '../../hooks/useSession'
+import { RemoveUserAPI } from '../../services/userAPI'
 
 interface RemoveUserModalProps {
   isOpen: boolean
@@ -30,8 +30,7 @@ const RemoveUserModal = ({
 
     setLoading(true)
 
-    api
-      .delete('/users/' + user.id)
+    RemoveUserAPI(user.id)
       .then(() => {
         toast.success('usuário removido com sucesso!')
         if (session.user.id === user.id) return session.SignOut()

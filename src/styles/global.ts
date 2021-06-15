@@ -89,7 +89,20 @@ export const Screen = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+    transition: 0.2s;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #44444444;
+  }
 `
 
 interface LoadingBarProps {
@@ -97,7 +110,9 @@ interface LoadingBarProps {
 }
 
 export const LoadingBar = styled.div<LoadingBarProps>`
-  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
   height: 4px;
   width: 100%;
   top: ${props => (props.loading ? 0 : -4)}px;

@@ -7,9 +7,9 @@ import React, {
 } from 'react'
 import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
-import { api } from '../services/api'
 import { UserType } from '../types/user'
-import base64 from 'base-64'
+import { ChangePasswordAPI } from '../services/userAPI'
+import { SignInAPI } from '../services/authAPI'
 
 interface SessionContextData {
   user?: UserType
@@ -53,24 +53,9 @@ export const SessionProvider = ({ children }: SessionProviderProps) => {
   }, [])
 
   const SignIn = async (email: string, password: string) => {
-    // buscar usuário correspondente
-    await api
-      .get('/users', {
-        params: {
-          email: email.toLowerCase(),
-          password: base64.encode(password)
-        }
-      })
-      .then(response => {
-        // caso email e/ou senha não coincidirem com algum usuário cadastro
-        if (response.data.length === 0)
-          return toast.error('Usuário não encontrado')
-
-        // deletar atributo password do objeto user
-        const user: UserType = response.data[0]
-        delete user.password
-
-        // salvar usuário em localstorage
+    await SignInAPI(email, password)
+      .then(user => {
+        // salvar usuário em localStorage
         localStorage.setItem('user', JSON.stringify(user))
 
         // salvar usuário em sessão
@@ -80,7 +65,8 @@ export const SessionProvider = ({ children }: SessionProviderProps) => {
         toast.success('Login realizado com sucesso')
         router.push('/users')
       })
-      .catch(() => {
+      .catch(err => {
+        if (err.message) return toast.error(err.message)
         toast.error(
           'Não foi possível fazer login agora, tente novamente mais tarde'
         )
@@ -102,28 +88,11 @@ export const SessionProvider = ({ children }: SessionProviderProps) => {
     actualPassword: string,
     newPassword: string
   ) => {
-    return await api
-      .get('/users', {
-        params: {
-          email: user.email.toLowerCase(),
-          password: base64.encode(actualPassword)
-        }
-      })
-      .then(response => {
-        if (response.data.length === 0) {
-          throw 'Senha atual incorreta'
-        }
-
-        return api
-          .patch('/users/' + user.id, {
-            password: base64.encode(newPassword)
-          })
-          .then(() => {
-            toast.success('Senha alterada com sucesso')
-            SignOut()
-            return true
-          })
-      })
+    return ChangePasswordAPI(user.id, actualPassword, newPassword).then(() => {
+      toast.success('Senha alterada com sucesso')
+      SignOut()
+      return true
+    })
   }
 
   return (

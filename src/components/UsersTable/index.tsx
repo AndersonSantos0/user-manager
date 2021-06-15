@@ -21,6 +21,7 @@ const UsersTable = ({ data = [] }: UsersTableProps) => {
             <th className={'TDoc'}>Documento</th>
           </tr>
         </thead>
+
         <tbody>
           {data.map(user => (
             <tr

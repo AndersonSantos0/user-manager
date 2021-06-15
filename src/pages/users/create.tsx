@@ -1,25 +1,25 @@
 import { useState, FormEvent } from 'react'
 import Head from 'next/head'
 import Switch from 'react-switch'
-import base64 from 'base-64'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
 import { FiSave } from 'react-icons/fi'
+import { Screen } from '../../styles/global'
 import ActivityIndicator from '../../components/ActivityIndicator'
 import Input from '../../components/Input'
 import AsideMenu from '../../components/AsideMenu'
-import { api } from '../../services/api'
 import {
   isBirthDateValid,
   isEmailValid,
   isDocumentValid,
-  isDbUserFree
+  validateForm
 } from '../../utils/validation'
 import {
   UsersScreenContainer,
   UsersScreenContent,
   UsersContainer
 } from '../../styles/pages/Users'
+import { CreateUserAPI } from '../../services/userAPI'
 
 const UserCreate = () => {
   const router = useRouter()
@@ -41,54 +41,54 @@ const UserCreate = () => {
 
   const [loading, setLoading] = useState(false)
 
-  const validateForm = async () => {
-    const formatedDocument = Number(document.replace(/[^\d]+/g, ''))
+  const validateCreateUserForm = async () => {
     const formatedEmail = email.toLowerCase()
 
-    if (name.length < 2) return false
-    if (lastName.length < 2) return false
-    if (!isBirthDateValid(birthDate)) return false
-    if (!isDocumentValid(document)) return false
-    if (!isEmailValid(formatedEmail)) return false
-    if (password.length < 8) return false
+    return await validateForm({
+      firstName: name,
+      lastName,
+      email,
+      birthDate,
+      document,
+      password
+    }).catch(err => {
+      switch (err.error) {
+        case 'EMAIL_ALREADY_EXIST':
+          setAlreadyTakenEmail(formatedEmail)
+          break
+        case 'DOC_ALREADY_EXIST':
+          setAlreadyTakenDocument(document)
+          break
+      }
 
-    const [isEmailAlreadyTaken, isDocumentAlreadyTaken] = await isDbUserFree(
-      formatedEmail,
-      formatedDocument
-    )
-
-    if (isEmailAlreadyTaken) {
-      toast.error('Email já cadastrado')
-      setAlreadyTakenEmail(formatedEmail)
-    }
-    if (isDocumentAlreadyTaken) {
-      toast.error('Documento já cadastrado')
-      setAlreadyTakenDocument(document)
-    }
-    if (isEmailAlreadyTaken || isDocumentAlreadyTaken) return false
-
-    return true
+      if (err.message) {
+        toast.error(err.message)
+      } else {
+        toast.error(
+          'Não foi possível editar esse usuário agora, tente novamente mais tarde'
+        )
+      }
+      return false
+    })
   }
 
   const onSubmitForm = async (e: FormEvent) => {
     e.preventDefault()
     setSubmited(true)
-
     setLoading(true)
 
-    const isFormValid = await validateForm()
+    const isFormValid = await validateCreateUserForm()
 
     if (isFormValid)
-      return api
-        .post('/users', {
-          firstName: name,
-          lastName,
-          birthDate,
-          email: email.toLowerCase(),
-          document: document.replace(/[^\d]+/g, ''),
-          password: base64.encode(password),
-          role: admin ? 'ADMIN' : 'USER'
-        })
+      return CreateUserAPI({
+        firstName: name,
+        email,
+        birthDate,
+        document,
+        lastName,
+        password,
+        role: admin ? 'ADMIN' : 'USER'
+      })
         .then(() => {
           router.push('/users')
           toast.success('Usuário criado com sucesso!')
@@ -98,7 +98,7 @@ const UserCreate = () => {
   }
 
   return (
-    <div>
+    <Screen>
       <Head>
         <title>UserManager</title>
       </Head>
@@ -210,7 +210,7 @@ const UserCreate = () => {
           </section>
         </UsersScreenContent>
       </UsersScreenContainer>
-    </div>
+    </Screen>
   )
 }
 

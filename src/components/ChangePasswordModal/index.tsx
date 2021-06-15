@@ -44,7 +44,7 @@ const ChangePasswordModal = ({
       session
         .ChangePassword(actualPassword, newPassword)
         .catch(err => {
-          toast.error(err)
+          toast.error(err.message)
         })
         .finally(() => setLoading(false))
   }

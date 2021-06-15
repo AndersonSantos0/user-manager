@@ -5,6 +5,7 @@ import base64 from 'base-64'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
 import { FiTrash2, FiSave } from 'react-icons/fi'
+import { Screen } from '../../../styles/global'
 import ActivityIndicator from '../../../components/ActivityIndicator'
 import RemoveUserModal from '../../../components/RemoveUserModal'
 import { GetServerSideProps } from 'next'
@@ -17,7 +18,7 @@ import {
   isBirthDateValid,
   isEmailValid,
   isDocumentValid,
-  isDbUserFree
+  validateForm
 } from '../../../utils/validation'
 import {
   UsersScreenContainer,
@@ -25,6 +26,7 @@ import {
   UsersContainer
 } from '../../../styles/pages/Users'
 import { useSession } from '../../../hooks/useSession'
+import { EditUserAPI } from '../../../services/userAPI'
 
 interface UserEditProps {
   status: number
@@ -58,39 +60,41 @@ const UserEdit = ({ status, user }: UserEditProps) => {
 
   const [loading, setLoading] = useState(false)
 
-  const validateForm = async () => {
-    const formatedDocument = Number(document.replace(/[^\d]+/g, ''))
+  const validateEditUserForm = async () => {
     const formatedEmail = email.toLowerCase()
 
-    if (name.length < 2) return false
-    if (lastName.length < 2) return false
-    if (!isBirthDateValid(birthDate)) return false
-    if (!isDocumentValid(document)) return false
-    if (!isEmailValid(formatedEmail)) return false
-    if (password.length < 8) return false
+    return await validateForm(
+      {
+        firstName: name,
+        lastName,
+        email,
+        birthDate,
+        document,
+        password
+      },
+      {
+        userEmail: user.email,
+        userDocument: user.document
+      }
+    ).catch(err => {
+      switch (err.error) {
+        case 'EMAIL_ALREADY_EXIST':
+          setAlreadyTakenEmail(formatedEmail)
+          break
+        case 'DOC_ALREADY_EXIST':
+          setAlreadyTakenDocument(document)
+          break
+      }
 
-    const [isEmailAlreadyTaken, isDocumentAlreadyTaken] = await isDbUserFree(
-      formatedEmail,
-      formatedDocument
-    )
-
-    if (isEmailAlreadyTaken && formatedEmail !== user.email) {
-      toast.error('Email já cadastrado')
-      setAlreadyTakenEmail(formatedEmail)
-    }
-
-    if (isDocumentAlreadyTaken && formatedDocument !== Number(user.document)) {
-      toast.error('Documento já cadastrado')
-      setAlreadyTakenDocument(document)
-    }
-
-    if (
-      (isEmailAlreadyTaken && formatedEmail !== user.email) ||
-      (isDocumentAlreadyTaken && formatedDocument !== Number(user.document))
-    )
+      if (err.message) {
+        toast.error(err.message)
+      } else {
+        toast.error(
+          'Não foi possível editar esse usuário agora, tente novamente mais tarde'
+        )
+      }
       return false
-
-    return true
+    })
   }
 
   const onSubmitForm = async (e: FormEvent) => {
@@ -99,19 +103,19 @@ const UserEdit = ({ status, user }: UserEditProps) => {
 
     setLoading(true)
 
-    const isFormValid = await validateForm()
+    const isFormValid = await validateEditUserForm()
 
     if (isFormValid)
-      return api
-        .patch('/users/' + user.id, {
-          firstName: name,
-          lastName,
-          birthDate,
-          email: email.toLowerCase(),
-          document: document.replace(/[^\d]+/g, ''),
-          password: base64.encode(password),
-          role: admin ? 'ADMIN' : 'USER'
-        })
+      return EditUserAPI({
+        id: user.id,
+        firstName: name,
+        lastName,
+        birthDate,
+        email,
+        document,
+        password,
+        role: admin ? 'ADMIN' : 'USER'
+      })
         .then(() => {
           if (session.user.id === user.id) {
             session.SignOut()
@@ -126,7 +130,7 @@ const UserEdit = ({ status, user }: UserEditProps) => {
   }
 
   return (
-    <div>
+    <Screen>
       <Head>
         <title>UserManager</title>
       </Head>
@@ -257,7 +261,7 @@ const UserEdit = ({ status, user }: UserEditProps) => {
         isOpen={showRemoveUserModal}
         onRequestClose={() => setShowRemoveUserModal(false)}
       />
-    </div>
+    </Screen>
   )
 }
 
