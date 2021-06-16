@@ -64,7 +64,13 @@ const UserCreate = () => {
       }
 
       if (err.message) {
-        toast.error(err.message)
+        switch (err.message) {
+          case 'Network Error':
+            toast.error('Problemas com o servidor, tente novamente mais tarde')
+            break
+          default:
+            toast.error(err.message)
+        }
       } else {
         toast.error(
           'Não foi possível editar esse usuário agora, tente novamente mais tarde'

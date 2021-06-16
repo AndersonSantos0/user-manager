@@ -15,6 +15,7 @@ import { api } from '../../../services/api'
 import { UserType } from '../../../types/user'
 import ImagePicker from '../../../components/ImagePicker'
 import NotFound from '../../404'
+import InternalServerError from '../../500'
 import {
   isBirthDateValid,
   isEmailValid,
@@ -36,6 +37,7 @@ interface UserEditProps {
 
 const UserEdit = ({ status, user }: UserEditProps) => {
   // Caso usuário não exista
+  if (status === 500) return <InternalServerError />
   if (status === 404) return <NotFound />
 
   const router = useRouter()
@@ -287,7 +289,7 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
   } catch (err) {
     return {
       props: {
-        status: err.response.status
+        status: err.response?.status || 500
       }
     }
   }

@@ -64,6 +64,16 @@ describe('User edit page', () => {
     expect(screen.getByText('Oops')).toBeInTheDocument()
   })
 
+  it('Renders internal server error component when server are off', () => {
+    render(<UserEdit status={500} />)
+
+    expect(
+      screen.getByText(
+        'Encontramos alguns problemas com o servidor, tente novamente mais tarde'
+      )
+    ).toBeInTheDocument()
+  })
+
   it('loads user data', async () => {
     const retriveUsersDataMocked = mocked(api.get)
 

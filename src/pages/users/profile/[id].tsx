@@ -11,6 +11,7 @@ import { api } from '../../../services/api'
 import { UserType } from '../../../types/user'
 import { useSession } from '../../../hooks/useSession'
 import NotFound from '../../404'
+import InternalServerError from '../../500'
 import {
   UserContainer,
   UserProfile,
@@ -28,6 +29,7 @@ interface UserScreenProps {
 }
 
 const UserScreen = ({ user, status }: UserScreenProps) => {
+  if (status === 500) return <InternalServerError />
   if (status === 404) return <NotFound />
 
   const session = useSession()
@@ -179,7 +181,7 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
   } catch (err) {
     return {
       props: {
-        status: err.response.status
+        status: err.response?.status || 500
       }
     }
   }

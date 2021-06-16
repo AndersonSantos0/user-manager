@@ -136,6 +136,16 @@ describe('User profile page', () => {
     expect(screen.getByText('Oops')).toBeInTheDocument()
   })
 
+  it('Renders internal server error component when server are off', () => {
+    render(<Profile status={500} />)
+
+    expect(
+      screen.getByText(
+        'Encontramos alguns problemas com o servidor, tente novamente mais tarde'
+      )
+    ).toBeInTheDocument()
+  })
+
   it('loads user data', async () => {
     const retriveUsersDataMocked = mocked(api.get)
 

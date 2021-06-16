@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { FiPlus } from 'react-icons/fi'
 import { Screen } from '../../styles/global'
+import InternalServerError from '../500'
 import UsersTable from '../../components/UsersTable'
 import AsideMenu from '../../components/AsideMenu'
 import { api } from '../../services/api'
@@ -17,6 +18,7 @@ import PaginationIndex from '../../components/PaginationIndex'
 import UsersNotFound from '../../components/UsersNotFound'
 
 interface UserScreenProps {
+  status?: number
   users: Omit<UserType, 'password'>[]
   totalUsers: number
   totalPages: number
@@ -27,9 +29,12 @@ const UsersScreen = ({
   users = [],
   totalUsers,
   totalPages,
-  actualPage
+  actualPage,
+  status
 }: UserScreenProps) => {
   const session = useSession()
+
+  if (status === 500) return <InternalServerError />
 
   return (
     <Screen>
@@ -79,23 +84,36 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
   const quantity = query?.qtd || 5
   const actualPage = Number(query?.page) || 1
 
-  const response = await api.get('/users', {
-    params: {
-      q: query?.search,
-      _limit: quantity,
-      _page: actualPage
+  try {
+    const response = await api.get('/users', {
+      params: {
+        q: query?.search,
+        _limit: quantity,
+        _page: actualPage
+      }
+    })
+
+    const totalUsers = response.headers['x-total-count']
+    const totalPages = Math.ceil(totalUsers / Number(quantity))
+
+    return {
+      props: {
+        users: response.data,
+        totalUsers,
+        totalPages,
+        actualPage,
+        status: 200
+      }
     }
-  })
-
-  const totalUsers = response.headers['x-total-count']
-  const totalPages = Math.ceil(totalUsers / Number(quantity))
-
-  return {
-    props: {
-      users: response.data,
-      totalUsers,
-      totalPages,
-      actualPage
+  } catch {
+    return {
+      props: {
+        users: [],
+        totalUsers: 0,
+        totalPages: 0,
+        actualPage: 0,
+        status: 500
+      }
     }
   }
 }

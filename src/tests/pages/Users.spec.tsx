@@ -120,6 +120,24 @@ describe('Users page', () => {
     expect(screen.getByText('Nenhum usuário encontrado')).toBeInTheDocument()
   })
 
+  it('Renders internal server error component when server are off', () => {
+    render(
+      <Users
+        users={[]}
+        totalUsers={0}
+        totalPages={0}
+        actualPage={0}
+        status={500}
+      />
+    )
+
+    expect(
+      screen.getByText(
+        'Encontramos alguns problemas com o servidor, tente novamente mais tarde'
+      )
+    ).toBeInTheDocument()
+  })
+
   it('loads users data', async () => {
     const retriveUsersDataMocked = mocked(api.get)
 
@@ -136,7 +154,8 @@ describe('Users page', () => {
           users,
           totalUsers: users.length,
           totalPages: 1,
-          actualPage: 1
+          actualPage: 1,
+          status: 200
         }
       })
     )
