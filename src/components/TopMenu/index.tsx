@@ -1,5 +1,4 @@
 import { FiSearch } from 'react-icons/fi'
-
 import Logo from '../Logo'
 import SignOutModal from '../SignOutModal'
 import {

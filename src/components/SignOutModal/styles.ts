@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   h2 {
-    color: #666;
+    color: var(--text);
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
     font-weight: 500;

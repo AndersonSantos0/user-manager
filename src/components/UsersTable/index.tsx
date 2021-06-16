@@ -4,7 +4,7 @@ import { UserType } from '../../types/user'
 import { UsersTableContainer } from './styles'
 
 interface UsersTableProps {
-  data: UserType[]
+  data: Omit<UserType, 'password'>[]
 }
 
 const UsersTable = ({ data = [] }: UsersTableProps) => {

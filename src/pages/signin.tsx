@@ -79,7 +79,7 @@ const SignIn = () => {
           </section>
           <button disabled={loading} type="submit">
             {loading ? (
-              <ActivityIndicator width="1.8rem" height="1.8rem" />
+              <ActivityIndicator style={{ width: '100%', height: '1.8rem' }} />
             ) : (
               'Entrar'
             )}

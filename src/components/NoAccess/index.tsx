@@ -1,15 +1,9 @@
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
-import Lottie from 'react-lottie'
+import Lottie from 'react-lottie-player'
 import { NoAccessContainer } from './styles'
 import NoAccessAnimation from '../../animations/no_access.json'
 import { useRouter } from 'next/router'
-
-const defaultOptions = {
-  loop: true,
-  autoplay: true,
-  animationData: NoAccessAnimation
-}
 
 interface NoAccessProps {
   redirect?: boolean
@@ -50,13 +44,10 @@ const NoAccess = ({ redirect = true, hasSession }: NoAccessProps) => {
         <title>Sem Permissão</title>
       </Head>
       <Lottie
-        options={defaultOptions}
-        height={'100%'}
-        width={'100%'}
-        style={{ maxWidth: 400, maxHeight: 400 }}
-        isStopped={false}
-        isPaused={false}
-        isClickToPauseDisabled={true}
+        loop
+        animationData={NoAccessAnimation}
+        play
+        style={{ width: 400, height: 400 }}
       />
       <h1>Você não tem permissão para acessar essa tela</h1>
       {redirect && <h2>Você será redirecionado em {seconds} segundos...</h2>}

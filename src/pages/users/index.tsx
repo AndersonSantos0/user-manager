@@ -17,7 +17,7 @@ import PaginationIndex from '../../components/PaginationIndex'
 import UsersNotFound from '../../components/UsersNotFound'
 
 interface UserScreenProps {
-  users: UserType[]
+  users: Omit<UserType, 'password'>[]
   totalUsers: number
   totalPages: number
   actualPage: number
@@ -43,7 +43,7 @@ const UsersScreen = ({
             <UsersContainer>
               <header>
                 <h1>Usuários</h1>
-                {session.user?.role === 'ADMIN' && (
+                {session.user.role === 'ADMIN' && (
                   <Link href="/users/create">
                     <a>
                       Adicionar usuário
@@ -74,14 +74,14 @@ const UsersScreen = ({
 }
 
 export const getServerSideProps: GetServerSideProps = async ctx => {
-  const { qtd, page, search } = ctx.query
+  const query = ctx.query
 
-  const quantity = qtd || 5
-  const actualPage = Number(page) || 1
+  const quantity = query?.qtd || 5
+  const actualPage = Number(query?.page) || 1
 
   const response = await api.get('/users', {
     params: {
-      q: search,
+      q: query?.search,
       _limit: quantity,
       _page: actualPage
     }

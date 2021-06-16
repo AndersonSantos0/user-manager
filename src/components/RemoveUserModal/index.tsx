@@ -51,6 +51,7 @@ const RemoveUserModal = ({
     <Modal
       overlayClassName={'react-modal-overlay'}
       className={'react-modal-content'}
+      ariaHideApp={false}
       isOpen={isOpen}
       onRequestClose={onRequestClose}
     >
@@ -81,7 +82,7 @@ const RemoveUserModal = ({
           </button>
           <button disabled={loading} type="submit">
             {loading ? (
-              <ActivityIndicator width="1.5rem" height="1.5rem" />
+              <ActivityIndicator style={{ width: '100%', height: '1.5rem' }} />
             ) : (
               'Remover'
             )}

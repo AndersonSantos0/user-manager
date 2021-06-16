@@ -31,7 +31,7 @@ import { EditUserAPI } from '../../../services/userAPI'
 
 interface UserEditProps {
   status: number
-  user: UserType
+  user?: UserType
 }
 
 const UserEdit = ({ status, user }: UserEditProps) => {
@@ -242,10 +242,10 @@ const UserEdit = ({ status, user }: UserEditProps) => {
                         <ActivityIndicator
                           style={{
                             position: 'absolute',
-                            backgroundColor: 'inherit'
+                            backgroundColor: 'inherit',
+                            width: '100%',
+                            height: '1.5rem'
                           }}
-                          width="100%"
-                          height="1.5rem"
                         />
                       )}
                       Salvar

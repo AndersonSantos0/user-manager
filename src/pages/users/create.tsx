@@ -201,10 +201,10 @@ const UserCreate = () => {
                       <ActivityIndicator
                         style={{
                           position: 'absolute',
-                          backgroundColor: 'var(--primary)'
+                          backgroundColor: 'var(--primary)',
+                          width: '100%',
+                          height: '1.5rem'
                         }}
-                        width="100%"
-                        height="1.5rem"
                       />
                     )}
                     Salvar

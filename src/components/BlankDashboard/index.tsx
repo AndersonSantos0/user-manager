@@ -1,24 +1,16 @@
-import Lottie from 'react-lottie'
+import Lottie from 'react-lottie-player'
 import { BlankDashboardContainer } from './styles'
 import EmptyAnimation from '../../animations/empty.json'
 import React from 'react'
-
-const EmptyAnimationOptions = {
-  loop: true,
-  autoplay: true,
-  animationData: EmptyAnimation
-}
 
 const UsersNotFound = () => {
   return (
     <BlankDashboardContainer>
       <Lottie
-        options={EmptyAnimationOptions}
-        height={'12rem'}
-        width={'100%'}
-        isStopped={false}
-        isPaused={false}
-        isClickToPauseDisabled={true}
+        loop
+        animationData={EmptyAnimation}
+        play
+        style={{ width: '100%', height: '12rem' }}
       />
       <h1>Nada de interessante por enquanto</h1>
     </BlankDashboardContainer>

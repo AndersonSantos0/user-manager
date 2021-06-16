@@ -10,6 +10,7 @@ import { GetServerSideProps } from 'next'
 import { api } from '../../../services/api'
 import { UserType } from '../../../types/user'
 import { useSession } from '../../../hooks/useSession'
+import NotFound from '../../404'
 import {
   UserContainer,
   UserProfile,
@@ -22,10 +23,13 @@ import {
 import { useRouter } from 'next/router'
 
 interface UserScreenProps {
-  user: UserType
+  user?: UserType
+  status: number
 }
 
-const UserScreen = ({ user }: UserScreenProps) => {
+const UserScreen = ({ user, status }: UserScreenProps) => {
+  if (status === 404) return <NotFound />
+
   const session = useSession()
   const router = useRouter()
 
@@ -158,16 +162,25 @@ const UserScreen = ({ user }: UserScreenProps) => {
 
 export const getServerSideProps: GetServerSideProps = async ctx => {
   const { id } = ctx.params
-  const response = await api.get('/users/' + id)
 
-  const passwordMask = base64
-    .decode(response.data.password)
-    .split('')
-    .map(() => '*')
+  try {
+    const response = await api.get('/users/' + id)
 
-  return {
-    props: {
-      user: { ...response.data, password: passwordMask }
+    const passwordMask = base64
+      .decode(response.data.password)
+      .split('')
+      .map(() => '*')
+
+    return {
+      props: {
+        user: { ...response.data, password: passwordMask.join('') }
+      }
+    }
+  } catch (err) {
+    return {
+      props: {
+        status: err.response.status
+      }
     }
   }
 }

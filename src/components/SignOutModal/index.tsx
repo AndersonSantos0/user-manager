@@ -27,6 +27,7 @@ const ChangePasswordModal = ({
       className={'react-modal-content'}
       isOpen={isOpen}
       onRequestClose={onRequestClose}
+      ariaHideApp={false}
     >
       <button
         className="react-modal-close"

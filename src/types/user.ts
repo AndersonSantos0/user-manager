@@ -5,7 +5,7 @@ export type UserType = {
   lastName: string
   birthDate: string
   email: string
-  document: number
+  document: number | string
   password: string
   role: 'ADMIN' | 'USER'
 }

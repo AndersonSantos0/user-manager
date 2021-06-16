@@ -33,7 +33,7 @@ const PaginationIndex = ({ actualPage, totalPages }: PaginationIndexProps) => {
         </>
       )}
       {linksCount.map(idx => {
-        if (startNumber + idx > totalPages) return <></>
+        if (startNumber + idx > totalPages) return null
         return (
           <button
             key={idx}

@@ -1,23 +1,15 @@
-import Lottie from 'react-lottie'
+import Lottie from 'react-lottie-player'
 import { UsersNotFoundContainer } from './styles'
 import EmptyAnimation from '../../animations/empty.json'
-
-const EmptyAnimationOptions = {
-  loop: true,
-  autoplay: true,
-  animationData: EmptyAnimation
-}
 
 const UsersNotFound = () => {
   return (
     <UsersNotFoundContainer>
       <Lottie
-        options={EmptyAnimationOptions}
-        height={'12rem'}
-        width={'100%'}
-        isStopped={false}
-        isPaused={false}
-        isClickToPauseDisabled={true}
+        loop
+        animationData={EmptyAnimation}
+        play
+        style={{ width: '100%', height: '12rem' }}
       />
       <h1>Nenhum usuário encontrado</h1>
     </UsersNotFoundContainer>
