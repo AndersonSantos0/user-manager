@@ -21,7 +21,7 @@ const NotFound = () => {
       <h1>Oops</h1>
       <h2>
         Esse caminho parece meio vazio, precisamos{' '}
-        <span onClick={() => router.push('/users')}>voltar</span>
+        <span onClick={() => router.push('/')}>voltar</span>
       </h2>
     </NotFoundContainer>
   )

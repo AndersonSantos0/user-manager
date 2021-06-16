@@ -20,10 +20,12 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     const handleRouteChange = () => {
+      // ao iniciar o evento de troca de tela, a barra de loading parece
       setLoading(true)
     }
 
     const handleRouteChanged = () => {
+      // após ocorrer a troca de tela, a barra de loading desaparece
       setLoading(false)
     }
 
@@ -41,6 +43,7 @@ function MyApp({ Component, pageProps }) {
       <SessionProvider>
         <AppContainer>
           <LoadingBar loading={loading ? 1 : 0} />
+          {/* Verificar se a tela atual precisa que o menu seja renderizado */}
           {!NoMenuRoutes.includes(router.route) && <TopMenu />}
           <Component {...pageProps} />
         </AppContainer>

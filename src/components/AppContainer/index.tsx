@@ -15,7 +15,10 @@ const AppContainer = ({ children }: AppContainerProps) => {
 
   const adminOnlyRoutes = ['/users/create']
 
+  // caso sessão carregando
   if (session.hasSession === undefined) return <AppContainerElement />
+
+  // caso usuário esteja em uma tela na qual não tem permissão de acessar
   if (
     (!session.hasSession && router.route !== '/signin') ||
     (session.hasSession &&

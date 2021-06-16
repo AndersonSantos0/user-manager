@@ -14,6 +14,7 @@ const AsideMenu = () => {
     <AsideMenuContainer>
       <h1>Geral</h1>
       <ul>
+        {/* caso rota atual seja igual a rota do menu */}
         <li className={router.route === '/' ? 'active' : null}>
           <Link href="/">
             <a>
@@ -21,6 +22,7 @@ const AsideMenu = () => {
             </a>
           </Link>
         </li>
+        {/* caso rota atual seja igual a rota do menu */}
         <li className={router.route.includes('/users') ? 'active' : null}>
           <Link href="/users">
             <a>
@@ -33,6 +35,7 @@ const AsideMenu = () => {
       <ul>
         <li>
           <a onClick={() => switchTheme()}>
+            {/* caso dark mode ativado */}
             {theme === 'dark' ? (
               <FiToggleRight color="var(--primary)" />
             ) : (

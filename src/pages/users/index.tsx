@@ -34,6 +34,7 @@ const UsersScreen = ({
 }: UserScreenProps) => {
   const session = useSession()
 
+  // caso o servidor esteja fora do ar
   if (status === 500) return <InternalServerError />
 
   return (
@@ -48,6 +49,7 @@ const UsersScreen = ({
             <UsersContainer>
               <header>
                 <h1>Usuários</h1>
+                {/* caso o usuário da sessão seja administrador */}
                 {session.user.role === 'ADMIN' && (
                   <Link href="/users/create">
                     <a>
@@ -57,6 +59,7 @@ const UsersScreen = ({
                   </Link>
                 )}
               </header>
+              {/* caso a list ade usuários esteja vazia */}
               {users.length === 0 ? (
                 <UsersNotFound />
               ) : (
@@ -106,6 +109,8 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
       }
     }
   } catch {
+    // caso o servidor esteja fora do ar
+    // ou ocorra algum erro que impessa a renderização dos usuários em tela
     return {
       props: {
         users: [],

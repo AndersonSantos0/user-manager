@@ -13,9 +13,11 @@ interface NoAccessProps {
 const NoAccess = ({ redirect = true, hasSession }: NoAccessProps) => {
   const router = useRouter()
 
+  // tempo em segundo para redirecionamento
   const [seconds, setSeconds] = useState(5)
 
   const _redirect = () => {
+    // caso usuário deslogado
     if (!hasSession) {
       router.push('/signin')
     }
@@ -29,7 +31,9 @@ const NoAccess = ({ redirect = true, hasSession }: NoAccessProps) => {
       setSeconds(prev => (prev - 1 < 0 ? 0 : prev - 1))
     }
 
+    // intervalo para mostrar a contagem de segundos em tela
     const intervalTimer = redirect && setInterval(decrementSeconds, 1000)
+    // timeout para redirecionamento
     const redirectTimer = redirect && setTimeout(_redirect, seconds * 1000)
 
     return () => {

@@ -22,9 +22,10 @@ const SignIn = () => {
   useEffect(() => {
     let hasSessionTimer
 
+    // caso o usuário ja esteja logado um timer de 1 segundo ira redireciona-lo para o dashboard
     if (session.hasSession && !submited) {
       hasSessionTimer = setTimeout(() => {
-        router.push('/users')
+        router.push('/')
         toast.info('Você já está logado')
       }, 1000)
     }

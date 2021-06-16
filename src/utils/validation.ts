@@ -125,6 +125,7 @@ export const validateForm = async (
   const formatedDocument = Number(document.replace(/[^\d]+/g, ''))
   const formatedEmail = email.toLowerCase()
 
+  // valida os valores do formulário
   if (firstName.length < 2) return false
   if (lastName.length < 2) return false
   if (!isBirthDateValid(birthDate)) return false
@@ -132,6 +133,7 @@ export const validateForm = async (
   if (!isEmailValid(formatedEmail)) return false
   if (password.length < 8) return false
 
+  // verificar se o email e o documento ja foram cadastrados
   const [isEmailAlreadyTaken, isDocumentAlreadyTaken] = await isDbUserFree(
     formatedEmail,
     formatedDocument

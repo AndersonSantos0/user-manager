@@ -9,6 +9,7 @@ interface ImagePickerProps {
 }
 
 const ImagePicker = ({ value, onChange }: ImagePickerProps) => {
+  // valor base64 da imagem
   const [image, setImage] = useState(value)
 
   useEffect(() => {
@@ -16,9 +17,11 @@ const ImagePicker = ({ value, onChange }: ImagePickerProps) => {
   }, [value])
 
   const getBase64FromFile = _image => {
-    console.log(_image)
+    // trata arquivo selecionado e o tranforma em um base64
     if (!_image) return
     const file = _image[0]
+
+    // caso arquivo selecionado não seja uma imagem
     if (file.type !== 'image/png' && file.type !== 'image/jpeg')
       return toast.error('Apenas imagens são permitidas')
 

@@ -34,6 +34,8 @@ const ChangePasswordModal = ({
   const handleChangePassword = async (e: FormEvent) => {
     e.preventDefault()
     setSubmited(true)
+
+    // caso senhas sejam iguais
     if (actualPassword === newPassword)
       return toast.error('As Senhas não podem ser iguais')
 

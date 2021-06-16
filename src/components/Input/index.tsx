@@ -31,6 +31,7 @@ const Input: React.FC<InputProps> = ({
     <InputContainer error={error} hasIcon={hasIcon}>
       <InputLabel>{label}</InputLabel>
       <div>
+        {/* caso tipo do input seja 'document' ou 'date' */}
         {['document', 'date'].includes(type) ? (
           <TextInputMask
             value={value}
@@ -51,8 +52,11 @@ const Input: React.FC<InputProps> = ({
             onChange={e => onChange && onChange(e.target.value)}
           />
         )}
+
+        {/* caso tipo do input seja 'password' */}
         {type === 'password' && (
           <InputIcon onClick={() => setShowPassword(!showPassword)}>
+            {/* lógica de mostragem de senha no input */}
             {showPassword ? (
               <BsEyeSlash size={'1.25rem'} />
             ) : (
@@ -61,6 +65,8 @@ const Input: React.FC<InputProps> = ({
           </InputIcon>
         )}
       </div>
+
+      {/* feedback de erro */}
       {error && (
         <InputFeedBack>{errorMessage || 'Valor inválido'}</InputFeedBack>
       )}

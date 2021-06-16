@@ -65,6 +65,7 @@ const UserCreate = () => {
 
       if (err.message) {
         switch (err.message) {
+          // caso o servidor esteja fora do ar
           case 'Network Error':
             toast.error('Problemas com o servidor, tente novamente mais tarde')
             break
@@ -72,8 +73,9 @@ const UserCreate = () => {
             toast.error(err.message)
         }
       } else {
+        // caso ocorra algum erro que impessa a adição do usuário
         toast.error(
-          'Não foi possível editar esse usuário agora, tente novamente mais tarde'
+          'Não foi possível adicionar esse usuário agora, tente novamente mais tarde'
         )
       }
       return false
@@ -98,8 +100,8 @@ const UserCreate = () => {
         password,
         role: admin ? 'ADMIN' : 'USER'
       })
-        .then(() => {
-          router.push('/users')
+        .then(response => {
+          router.push('/users/profile/' + response.data.id)
           toast.info('Usuário criado com sucesso!')
         })
         .finally(() => setLoading(false))

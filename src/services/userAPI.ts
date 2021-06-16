@@ -16,8 +16,6 @@ export const CreateUserAPI = async ({
   role,
   image
 }: CreateUserAPIArgs) => {
-  console.log('[image]: ', image)
-
   return await api.post('/users', {
     firstName,
     lastName,

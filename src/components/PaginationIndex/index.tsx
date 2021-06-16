@@ -26,12 +26,15 @@ const PaginationIndex = ({ actualPage, totalPages }: PaginationIndexProps) => {
 
   return (
     <PaginationIndexContainer>
+      {/* indexa as páginas iniciais */}
       {actualPage - 2 > 1 && (
         <>
           <button onClick={() => indexHandle(1)}>1</button>
           {actualPage - 2 > 2 && '...'}
         </>
       )}
+
+      {/* indexa as páginas */}
       {linksCount.map(idx => {
         if (startNumber + idx > totalPages) return null
         return (
@@ -44,6 +47,8 @@ const PaginationIndex = ({ actualPage, totalPages }: PaginationIndexProps) => {
           </button>
         )
       })}
+
+      {/* indexa as páginas finais */}
       {totalPages > 5 && startNumber + 4 < totalPages && (
         <>
           {startNumber + 5 < totalPages && '...'}

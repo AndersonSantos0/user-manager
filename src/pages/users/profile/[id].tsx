@@ -29,7 +29,10 @@ interface UserScreenProps {
 }
 
 const UserScreen = ({ user, status }: UserScreenProps) => {
+  // caso o servidor esteja fora do ar
   if (status === 500) return <InternalServerError />
+
+  // caso o usuário não exista
   if (status === 404) return <NotFound />
 
   const session = useSession()
@@ -108,11 +111,13 @@ const UserScreen = ({ user, status }: UserScreenProps) => {
                 </table>
               </div>
               {(session.user.id === user.id ||
-                session.user.role === 'ADMIN') && (
+                (session.user.role === 'ADMIN' && user.role === 'USER')) && (
                 <ActionButtonsContainer>
                   {
-                    // caso usuário logar seja Administrador
-                    session.user.role === 'ADMIN' ? (
+                    // caso usuário logado seja Administrador
+                    (session.user.role === 'ADMIN' && user.role === 'USER') ||
+                    (session.user.role === 'ADMIN' &&
+                      user.id === session.user.id) ? (
                       <>
                         <button
                           onClick={() => router.push('/users/edit/' + user.id)}
@@ -131,6 +136,7 @@ const UserScreen = ({ user, status }: UserScreenProps) => {
                         </button>
                       </>
                     ) : (
+                      // caso usuário logado não seja administrador e a conta da sessão é a mesma do perfil
                       session.user.id === user.id && (
                         <button
                           onClick={() => setShowChangePasswordModal(true)}
@@ -179,6 +185,8 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
       }
     }
   } catch (err) {
+    // caso servidor fora do are
+    // ou algum erro que impeça a renderização das informações
     return {
       props: {
         status: err.response?.status || 500

@@ -36,8 +36,10 @@ interface UserEditProps {
 }
 
 const UserEdit = ({ status, user }: UserEditProps) => {
-  // Caso usuário não exista
+  // Caso servidor fora do ar
   if (status === 500) return <InternalServerError />
+
+  // Caso usuário não exista
   if (status === 404) return <NotFound />
 
   const router = useRouter()
@@ -93,6 +95,7 @@ const UserEdit = ({ status, user }: UserEditProps) => {
       if (err.message) {
         toast.error(err.message)
       } else {
+        // caso ocorra algum erro que impessa a edição do usuário
         toast.error(
           'Não foi possível editar esse usuário agora, tente novamente mais tarde'
         )
@@ -103,6 +106,9 @@ const UserEdit = ({ status, user }: UserEditProps) => {
 
   const onSubmitForm = async (e: FormEvent) => {
     e.preventDefault()
+
+    if (session.user.role === 'ADMIN' && user.role === 'ADMIN')
+      return toast.error('Você não pode editar as informações desse usuário')
     setSubmited(true)
 
     setLoading(true)
@@ -125,7 +131,7 @@ const UserEdit = ({ status, user }: UserEditProps) => {
           if (session.user.id === user.id) {
             session.SignOut()
           } else {
-            router.push('/users')
+            router.push('/users/profile/' + user.id)
           }
 
           toast.info('Usuário alterado com sucesso!')
@@ -255,6 +261,7 @@ const UserEdit = ({ status, user }: UserEditProps) => {
                     </button>
                   </div>
                 </section>
+                {/* caso usuário da sessão seja o mesmo do perfil */}
                 {session.user.id === user.id && (
                   <p>Após editar esse usuário você será deslogado</p>
                 )}
@@ -287,6 +294,8 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
       }
     }
   } catch (err) {
+    // caso servidor fora do are
+    // ou algum erro que impeça a renderização das informações
     return {
       props: {
         status: err.response?.status || 500
