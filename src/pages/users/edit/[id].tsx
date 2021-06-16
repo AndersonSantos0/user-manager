@@ -107,7 +107,11 @@ const UserEdit = ({ status, user }: UserEditProps) => {
   const onSubmitForm = async (e: FormEvent) => {
     e.preventDefault()
 
-    if (session.user.role === 'ADMIN' && user.role === 'ADMIN')
+    if (
+      session.user.role === 'ADMIN' &&
+      user.role === 'ADMIN' &&
+      session.user.id !== user.id
+    )
       return toast.error('Você não pode editar as informações desse usuário')
     setSubmited(true)
 

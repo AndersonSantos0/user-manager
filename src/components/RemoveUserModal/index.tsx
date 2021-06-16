@@ -28,6 +28,13 @@ const RemoveUserModal = ({
   const handleRemove = async (e: FormEvent) => {
     e.preventDefault()
 
+    if (
+      session.user.role === 'ADMIN' &&
+      user.role === 'ADMIN' &&
+      session.user.id !== user.id
+    )
+      return toast.error('Você não pode remover esse usuário')
+
     setLoading(true)
 
     RemoveUserAPI(user.id)
