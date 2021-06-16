@@ -194,17 +194,17 @@ Motivo: não possúo experiência com framework UI's, portanto priorizei os outr
 
 Eu pretendia utilizar o API routes do next para fazer as principais requisições do sistema (criar, deletar e editar o usuário), com isso o usuário não poderia vizualiar as validações no front-end e burlá-las de alguma forma, exemplo:
 
-Antes de editar ou criar um usuário eu verifico no json-server se as informações "Document" e "Email" já foram cadastradas, caso sim uma mensagem é apresentada, informando a necessidade de mudar essas informações.
+Antes de editar ou criar um usuário eu verifico no json-server se as informações "document" e "email" já foram cadastradas, caso sim uma mensagem é apresentada, informando a necessidade de mudar essas informações.
 
 Nesse exemplo são feitas 3 requisições para o json-server:
 
-- Verificar se o Documento já está cadastrado
+- Verificar se o documento já está cadastrado
 - Verificar se o email já está cadastrado
 - Atualizar as informações do usuário
 
-Com o uso da API routes essas requisições cairiam para 1, requisição essa que seria feita para a rota /api, e nessa rota todas essas validações de DataBase seriam executadas de maneira não visiveis ao usuário.
+Com o uso da API routes essas requisições cairiam para 1, requisição essa que seria feita para a rota '/api', e nessa rota todas essas validações de DataBase seriam executadas de maneira não visiveis ao usuário.
 
-Motivo da não implementação: Priorização das funcionalidades. Apesar de não estar utilizando a API routes do next, esta funcionalidade está 100%, portanto ao invés de focar em melhora-la eu foquei em desenvolver as implementações restantes, e por conta da falta de tempo não foi possível abordar o aprimoramento desta funcionalidade.
+Motivo da não implementação: Priorização das funcionalidades. Apesar de não estar utilizando a API routes do next, essa funcionalidade está 100%, portanto ao invés de focar em aprimorar essa funcionalidade eu foquei em desenvolver as implementações restantes, e por conta da falta de tempo não foi possível abordar o aprimoramento desta funcionalidade.
 
 ### 📊 Dashboard
 
