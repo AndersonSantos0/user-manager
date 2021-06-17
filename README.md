@@ -9,7 +9,7 @@ O UserManager é um projeto de desafio passado pela Softplan, tem como objetivo 
 
 ## 💻 Tecnologias
 
-Dentre as tecnologias utulizadas nesse projetos temos:
+Dentre as tecnologias utilizadas nesse projetos temos:
 - ReactJs
 - NextJs
 - Typescript
