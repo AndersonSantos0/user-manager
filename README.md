@@ -108,6 +108,18 @@ $ npm run server
 $ npm start
 ```
 
+### Usuário para testes
+
+email
+```
+admin@owner.com
+```
+
+senha
+```
+12345678
+```
+
 # Considerações
 
 ## 👨‍💻 Desenvolvimento
