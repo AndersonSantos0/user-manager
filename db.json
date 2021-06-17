@@ -150,6 +150,17 @@
       "password": "MTIzNDU2Nzg=",
       "role": "USER",
       "id": 15
+    },
+    {
+      "firstName": "admin",
+      "lastName": "owner",
+      "birthDate": "01-01-2001",
+      "email": "admin@owner.com",
+      "document": "19770091073",
+      "password": "MTIzNDU2Nzg=",
+      "role": "ADMIN",
+      "image": "",
+      "id": 16
     }
   ]
 }
