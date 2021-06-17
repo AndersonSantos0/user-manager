@@ -38,29 +38,28 @@ Além disso o Next possuí um Back end intermediario que é responsável pela re
 Nesse projeto utilizamos as principais tecnologias:
 - SPA para ter mais desempenho e fluidez na navegação
 - Pages routes para agilizar a manipulação de rotas de navegação
-- Dynamic routes para tonar o gerenciamento de informações mais transparente para o usuário
+- Dynamic routes para tornar o gerenciamento de informações mais transparente para o usuário
 
 ### 🔧 Typescript
 
-O Typescript é uma ferramenta de tipagem feita pela microsoft, desenvolvida com o objetivo de esclarecer o código e prever erros que aconteceriam por conta da tipagem dinâmica presente no Javascript atualmente, além disso o Typescript também trás uma vizualização clara do código para desenvolvedores multiplos. Nesse projeto o Typescript está sendo utilizado com um método de boas práticas e para organização e clareza do código.
+O Typescript é uma ferramenta de tipagem feita pela microsoft, desenvolvida com o objetivo de esclarecer o código e prever erros que aconteceriam por conta da tipagem dinâmica presente no Javascript atualmente, além disso o Typescript também trás uma vizualização clara do código para desenvolvedores multiplos no projeto. Nesse projeto o Typescript está sendo utilizado com um método de boas práticas e para organização e clareza do código.
 
 ### 💅 Styled-components
 
-O Styled-components é um pré processador de CSS que utiliza o conceito de CSS in Javascript, ou seja, CSS sendo interpretado pelo javascript, esse conceito trás muitos beneficios referentes a estilização da aplicação, nos permitindo por exemplo executar funções e resgatar valores javascript dentro das configurações do CSS, além disso o Styled-components tem o seu próprio provedor de Tema, o que facilita na hora de criar um tema alternativo para o aplicação (dark mode por exemplo). O Styled-components também trás algumas usualidades inventadas pelo SASS(outro pré-processador CSS), como o encascatamento de estilos. Nesse projeto o styled-components está sendo utilizado para a estilização geral da aplicação e para a manipulação de temas (DARK e LIGHT).
+O Styled-components é um pré processador de CSS que utiliza o conceito de CSS in Javascript, ou seja, CSS sendo interpretado pelo javascript, esse conceito trás muitos beneficios referentes a estilização da aplicação, nos permitindo por exemplo executar funções e resgatar valores javascript dentro das configurações do CSS, além disso o Styled-components tem o seu próprio provedor de Tema, o que facilita na hora de criar um tema alternativo para o aplicação (dark mode por exemplo). O Styled-components também trás algumas usualidades conhecidas pelo SASS(outro pré-processador CSS), como o encascatamento de estilos. Nesse projeto o styled-components está sendo utilizado para a estilização geral da aplicação e para a manipulação de temas (DARK e LIGHT).
 
 ### 📄 JSON-Server
 
-O JSON-Server é uma ferramenta criada para imitar a comunicação
-do cliente com um servidor, gerando assim um back-end fictício, aonde o front-end pode testar funcionalidades gerais. Nesse projeto o JSON-Server está sendo utilizado para imitar um CRUD de usuários do sistema de gerenciamento dos mesmos.
+O JSON-Server é uma ferramenta criada para imitar a comunicação do cliente com um servidor, gerando assim um back-end fictício, aonde o front-end pode testar funcionalidades gerais. Nesse projeto o JSON-Server está sendo utilizado para imitar um CRUD de usuários do sistema de gerenciamento dos mesmos.
 
 ### 👷‍♂️ Jest
 
-O Jest é uma framework de teste para javascript, além de ser uma das ferramentas mais conhecidas de testes o Jest é muito fácil de ser utilizado, tanto em testes integrados, quanto end-to-end, e principalmente, os testes unitários. Nesse projeto o Jest é utilizado para fazer testes unitários de componentes, vizando prever o funcionamento geral e principalmente a renderização final do mesmo.
+O Jest é uma framework de teste para javascript, além de ser uma das ferramentas mais conhecidas de testes o Jest é muito fácil de ser utilizado, tanto em testes integrados, quanto end-to-end, e principalmente, os testes unitários. Nesse projeto o Jest é utilizado para fazer testes unitários de componentes, visando prever o funcionamento geral e principalmente a renderização final do mesmo.
 
 
 ### ✍ Eslint + Prettier
 
-O Eslint é uma ferramenta utilizada para padronizar a estrutura do código com base em estruturas ja existentes consideradas por muitos eficiêntes, além disso o eslint trás algumas regras para a codificação, como por exemplo abolir a prática de criar funções vazias, prevê também alguns erros que podem ocorrer por falta de informação ou pela própria estrutura do código. Junto do eslint está o Prettier que é uma ferramenta utilizada para deixar o código mais amigável, aplicanto quebras de linhas automáticas, formas mais simples de estruturar o código, e formatação de estruturas de códigos para uma melhor vizualização, o eslint e o prettier junto do typescript fazem com que o código fique bem padronizado e bem estruturado, facilitando a vizualização e entendimento dos desenvolvedores.
+O Eslint é uma ferramenta utilizada para padronizar a estrutura do código com base em estruturas ja existentes consideradas por muitos eficiênte, além disso o eslint trás algumas regras para a codificação, como por exemplo abolir a prática de criar funções vazias, prevê também alguns erros que podem ocorrer por falta de informação ou pela própria estrutura do código. Junto do eslint está o Prettier que é uma ferramenta utilizada para deixar o código mais amigável, aplicanto quebras de linhas automáticas, formas mais simples de estruturar o código, e formatação de estruturas de códigos para uma melhor vizualização, o eslint e o prettier junto do typescript fazem com que o código fique bem padronizado e bem estruturado, facilitando a vizualização e entendimento dos desenvolvedores.
 
 ## Utilização do projeto
 
