@@ -5,7 +5,7 @@
 
 ## ℹ Sobre
 
-O UserManager é um projeto de desafio passado pela Softplan, tem como objetivo testar as habilidades de desenvolvimento de front end, além de visar um código limpo e fácilmente entendivel, tendo isso como base, chegamos ao user manager, uma ferramenta para gerenciamento de usuários, com sistema de autenticação e permissões.
+O UserManager é um projeto de desafio, tem como objetivo testar as habilidades de desenvolvimento de front end, além de visar um código limpo e fácilmente entendivel, tendo isso como base, chegamos ao user manager, uma ferramenta para gerenciamento de usuários, com sistema de autenticação e permissões.
 
 ## 💻 Tecnologias
 
